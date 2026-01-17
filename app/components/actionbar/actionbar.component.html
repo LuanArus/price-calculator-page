@@ -1,0 +1,115 @@
+<p-popover #popover>
+    <div class="flex flex-col gap-4">
+        <div class="statistics-container">
+            <h2>
+                <b>Estatísticas</b>
+            </h2>
+
+            <div>
+                - Tempo ao Buscar: {{ executionTime?.getFindTime() }} seg
+            </div>
+
+            <div>
+                - Tempo ao Salvar: {{ executionTime?.getSaveTime() }} seg
+            </div>
+
+            <div>
+                - Tempo ao Deletar: {{ executionTime?.getDeleteTime() }} seg
+            </div>
+
+            <div class="logs-container">
+                <h2>
+                    <b>Logs</b>
+                </h2>
+
+                <app-button [type]="ButtonType.Button" [icon]="'fas fa-book'" [label]="'Consultar Logs'" [changeOnMobile]="false" [pTooltip]="'Consultar Logs'"
+                    [tooltipPosition]="'top'" (onClick)="myShowRequestLogs()"></app-button>
+            </div>
+        </div>
+    </div>
+</p-popover>
+
+<p-drawer [(visible)]="rightDrawer" [styleClass]="'drawer-filter'" header="Filtros" position="right" [closable]="false" [closeOnEscape]="false" [dismissible]="false"
+    [fullScreen]="mainService.isMobile()" [transitionOptions]="'150ms cubic-bezier(0, 0, 0.2, 1)'">
+    <div class="drawer-content">
+        <p-panel #filterPanel>
+            <div class="grid gap-2 grid-cols-12">
+                <div class="col-span-12" *ngFor="let field of filters">
+                    <app-field [styleClass]="field.fieldStyleClass ?? ''" [label]="field?.label" [icon]="field?.icon" [type]="field?.fieldType"
+                        [selectOptions]="field?.selectOptions" [(model)]="field.model" [selectComponent]="field.selectComponent" [float]="field?.fieldFloat ?? true"
+                        [dateMode]="field?.dateMode" [sliderMinValue]="field?.sliderFieldMin" [sliderMaxValue]="field?.sliderFieldMax"
+                        [sliderDecimalPlaces]="field?.sliderDecimalPlaces"></app-field>
+                </div>
+            </div>
+        </p-panel>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="drawer-footer">
+            <div class="drawer-footer-inner">
+                <div class="left">
+                    <app-button *ngIf="hasFilter()" class="search-button" [type]="ButtonType.ButtonCancel" [icon]="'fas fa-filter-circle-xmark'" [label]="'Limpar'"
+                        [changeOnMobile]="true" [noBackground]="true" [pTooltip]="'Limpar Filtros'" [tooltipPosition]="'top'" (onClick)="myClearFilter()"></app-button>
+                </div>
+
+                <div class="right">
+                    <app-button [label]="'Filtrar'" [type]="ButtonType.ButtonCheck" [icon]="'fas fa-filter'" [fluid]="false" (onClick)="myFilter(filters)"></app-button>
+
+                    <app-button [label]="'Cancelar'" [type]="ButtonType.ButtonCancel" [fluid]="false" [noBackground]="true"
+                        (onClick)="myShowHideFilterDrawer(false)"></app-button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-drawer>
+
+<div class="actionbar">
+    <div class="actionbar-container">
+        <div class="actionbar-start">
+            <h5 *ngIf="!mainService.isMobile()" class="screen-label">
+                {{ label }}
+            </h5>
+        </div>
+
+        <div class="actionbar-end">
+            <app-button tourAnchor="t-new-button" [label]="buttonNewLabel" [type]="ButtonType.SplitButton" [options]="buttonNewActions" [disabled]="loading"
+                (onClick)="myNew($event)" (onDropdownClick)="myAddActions()"></app-button>
+
+            <app-button [label]="'Atualizar'" [type]="ButtonType.Button" [icon]="'fas fa-refresh'" [changeOnMobile]="true" [loading]="loading" [pTooltip]="'Atualizar'"
+                [tooltipPosition]="'top'" (onClick)="myFind($event)"></app-button>
+
+            <app-button [type]="ButtonType.Button" [icon]="'fas fa-question'" [changeOnMobile]="true" [pTooltip]="'Ajuda'" [tooltipPosition]="'top'"
+                (onClick)="myHelp($event)"></app-button>
+
+            <app-button [type]="ButtonType.Button" [icon]="'fas fa-chart-simple'" [changeOnMobile]="true" [pTooltip]="'Estatísticas'" [tooltipPosition]="'top'"
+                (onClick)="popover.show($event)"></app-button>
+        </div>
+    </div>
+
+    <div class="field-search">
+        <app-field [type]="FieldType.AutoComplete" [float]="false" [placeholder]="'Pesquisar...'" [icon]="'fas fa-search'" [autoCompleteClearAfterSelect]="true"
+            [autoCompleteComponent]="autoCompleteComponent" [autoCompleteFind]="autoCompleteFind" (onSelect)="mySelectSearch($event)"></app-field>
+
+        <app-button class="search-button" [type]="ButtonType.Button" [icon]="'fas fa-filter'" [label]="'Filtros'" [changeOnMobile]="true" [pTooltip]="'Filtros'"
+            [tooltipPosition]="'top'" (onClick)="myShowHideFilterDrawer(true)"></app-button>
+
+        <app-button *ngIf="hasFilter()" class="search-button" [type]="ButtonType.ButtonCancel" [icon]="'fas fa-filter-circle-xmark'" [label]="'Limpar'"
+            [changeOnMobile]="true" [noBackground]="true" [pTooltip]="'Limpar Filtros'" [tooltipPosition]="'top'" (onClick)="myClearFilter()"></app-button>
+    </div>
+
+    <div *ngIf="hasFilter()" class="grid gap-2 grid-cols-12">
+        <div class="col-span-12 gap-2 filter">
+            <b> Filtros: </b>
+            <div *ngFor="let filter of displayFilters" class="filter-inner">
+                <p-chip *ngIf="hasFilterItem(filter)" [removable]="true" (onRemove)="myRemoveFilter(filter)">
+                    <div class="filter-text">
+                        <b> {{ filter?.label }} - </b>
+                        <span>
+                            {{ filter?.getModel(filter) }}
+                        </span>
+                    </div>
+                </p-chip>
+            </div>
+        </div>
+    </div>
+</div>

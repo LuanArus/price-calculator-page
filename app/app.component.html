@@ -1,0 +1,40 @@
+<app-blockui [blocked]="blockUI"></app-blockui>
+
+<p-confirmdialog key="app-confirmation" />
+
+<app-dynamic-drawer [objects]="dynamicObjects"></app-dynamic-drawer>
+
+<tour-step-template>
+    <ng-template let-step="step">
+        <div class="tour" [style.width]="step?.stepDimensions?.width" [style.min-width]="step?.stepDimensions?.minWidth" [style.max-width]="step?.stepDimensions?.maxWidth">
+            <div class="header">
+                <div>{{ step.title }}</div>
+
+                <app-button [type]="ButtonType.ButtonSecondary" [icon]="'fas fa-times'" (onClick)="tourService.end()"></app-button>
+            </div>
+
+            <div class="content" [innerHTML]="step?.content"></div>
+
+            <div class="footer">
+                <div class="left">
+                    <app-button *ngIf="step?.visiblePrev" [type]="ButtonType.Button" [icon]="'fas fa-chevron-left'" [label]="step.prevBtnTitle" [noBackground]="true"
+                        [changeOnMobile]="false" [disabled]="step.disablePrev" (onClick)="tourService.prev()"></app-button>
+                </div>
+
+                <div *ngIf="step?.showProgress" class="center">
+                    {{ tourService.steps.indexOf(step) + 1 }} / {{ tourService.steps.length }}
+                </div>
+
+                <div class="right">
+                    <app-button *ngIf="tourService.hasNext(step) && step?.visibleNext" [type]="ButtonType.Button" [icon]="'fas fa-chevron-right'" [iconPos]="'right'"
+                        [label]="step.nextBtnTitle" [changeOnMobile]="false" [disabled]="step.disableNext" (onClick)="tourService.next()"></app-button>
+
+                    <app-button *ngIf="!tourService.hasNext(step) && step?.visibleNext" [type]="ButtonType.Button" [icon]="'fas fa-check'" [label]="step.endBtnTitle"
+                        [changeOnMobile]="false" [disabled]="step.disableNext" (onClick)="tourService.end()"></app-button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</tour-step-template>
+
+<router-outlet></router-outlet>

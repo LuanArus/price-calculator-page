@@ -6,7 +6,6 @@ import { provideRouter } from '@angular/router';
 import { route } from './app/app.module';
 import { providePrimeNG } from 'primeng/config';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ErrorInteceptor } from './app/interceptors/errorinterceptor';
 
 import Aura from '@primeng/themes/aura';
 import { MainService } from '@controller/main.service';
@@ -49,6 +48,5 @@ bootstrapApplication(AppComponent, {
 		ConfirmationService,
 		MessageService,
 		{ provide: APP_INITIALIZER, useFactory: initApp, deps: [MainService], multi: true, },
-		// { provide: ErrorHandler, useClass: ErrorInteceptor },
 	],
 }).catch((err) => console.error(err));

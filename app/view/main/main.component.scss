@@ -1,0 +1,41 @@
+.main {
+    width: auto;
+    max-width: 100%;
+    background: var(--p-surface-ground);
+    margin-left: 18rem;
+    transition: margin-left var(--transition-duration);
+
+    .table-logs {
+        &.table {
+            .data {
+                white-space: break-spaces !important;
+                -webkit-line-clamp: none !important;
+                line-clamp: none !important;
+            }
+        }
+    }
+
+    .spinner {
+        width: 30px;
+        height: 30px;
+        stroke: var(--p-primary-color);
+    }
+
+    .outlet {
+        height: calc(100vh - 5.5rem);
+        padding: 0 2rem 2rem 2rem;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    .dialog-request-log:not(.p-dialog-maximized) {
+        max-width: 90%;
+        width: 90%;
+    }
+
+    @media screen and (max-width: 991px) {
+        .outlet {
+            height: calc(100vh - 7.5rem);
+        }
+    }
+}

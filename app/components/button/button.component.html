@@ -1,0 +1,35 @@
+<div class="button">
+    <p-button [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'button-rounded ' + styleClass" *ngIf="type == ButtonType.Button" [icon]="icon" [iconPos]="iconPos" [label]="getLabel()" [fluid]="fluid"
+        [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-button [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'p-button-secondary button-rounded ' + styleClass" *ngIf="type == ButtonType.ButtonSecondary" [icon]="icon" [iconPos]="iconPos" [label]="getLabel()"
+        [fluid]="fluid" [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-button [ngClass]="{ 'button-rounded-mobile' : changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'p-button-primary button-rounded ' + styleClass" *ngIf="type == ButtonType.ButtonCheck" [icon]="icon ? icon : 'fas fa-check'" [iconPos]="iconPos"
+        [label]="label" [fluid]="fluid" [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-button [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'p-button-danger button-rounded ' + styleClass" *ngIf="type == ButtonType.ButtonCancel" [icon]="icon ? icon : 'fas fa-times'" [iconPos]="iconPos"
+        [label]="label" [fluid]="fluid" [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-button [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'p-button-danger button-rounded ' + styleClass" *ngIf="type == ButtonType.ButtonDelete" [icon]="icon ? icon : 'fas fa-trash-can'" [iconPos]="iconPos"
+        [label]="label" [fluid]="fluid" [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-button [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'p-button-warn button-rounded ' + styleClass" *ngIf="type == ButtonType.ButtonRevert" [icon]="icon ? icon : 'fas fa-arrow-rotate-left'"
+        [iconPos]="iconPos" [label]="label" [fluid]="fluid" [disabled]="disabled" [loading]="loading" (onClick)="myClick($event)" />
+
+    <p-splitbutton *ngIf="type == ButtonType.SplitButton"
+        [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'splitbutton-rounded ' + styleClass" [dropdownIcon]="'fas fa-ellipsis-vertical'" [label]="label" [model]="options" [fluid]="fluid"
+        [disabled]="disabled" (onClick)="myClick($event)" (onDropdownClick)="myDropdownClick()" />
+
+    <p-splitbutton *ngIf="type == ButtonType.SplitButtonSingle"
+        [ngClass]="{ 'button-rounded-mobile': changeOnMobile, 'trasnparent-background': noBackground, 'no-border': noBorder }"
+        [styleClass]="'splitbutton-rounded-single ' + styleClass" [dropdownIcon]="'fas fa-ellipsis-vertical'" [label]="label" [model]="options" [fluid]="fluid"
+        [disabled]="disabled" (onClick)="myClick($event)" (onDropdownClick)="myDropdownClick()" />
+</div>

@@ -1,0 +1,66 @@
+<app-blockui [target]="blockUIPanel" [blocked]="blockUI" [message]="blockUIMessage" />
+
+<div class="customer-area">
+   <div class="welcome">
+      <h1 class="user-name"> Bem vindo à <b> Calculadora de Preços </b> </h1>
+   </div>
+
+   <div class="grid gap-2 grid-cols-12">
+      <div class="col-span-12 lg:col-span-3 p-card card-secondary">
+         <div class="card-inner">
+            <p class="title"> Suporte </p>
+
+            <div class="support">
+               <div class="title">
+                  <span class="fab fa-whatsapp"> </span>
+                  <p> WhatsApp </p>
+               </div>
+
+               <div class="data">
+                  <p> (54) 9 9968-5468 </p>
+               </div>
+
+               <div class="button">
+                  <app-button [label]="'Iniciar conversa'" [type]="ButtonType.Button" [icon]="'fab fa-whatsapp'" [fluid]="true" (onClick)="contactSupport()"></app-button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-4 p-card card-secondary">
+         <div class="card-inner">
+            <p class="title"> Acesso Remoto </p>
+
+            <div class="support">
+               <div class="title-other">
+                  <span class="fas fa-computer"> </span>
+                  <a href="https://www.teamviewer.com/link/?url=505374"> Teamviwer </a>
+               </div>
+
+               <div class="title-other">
+                  <span class="fas fa-laptop"> </span>
+                  <a href="https://download.anydesk.com/AnyDesk.exe"> Anydesk </a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-5 p-card card-secondary">
+         <div class="card-inner">
+            <p class="title"> Outros Links </p>
+
+            <div class="support">
+               <div class="title-other">
+                  <span class="fab fa-instagram"> </span>
+                  <a href="https://www.instagram.com/confiancaassessoriagpe/" target="_blank"> Instagram </a>
+               </div>
+
+               <div class="title-other">
+                  <span class="fab fa-facebook"> </span>
+                  <a href="https://www.facebook.com/p/Confian%C3%A7a-Assessoria-e-Contabilidade-100064116517735/?locale=pt_BR" target="_blank"> Facebook </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
