@@ -31,7 +31,6 @@ export class TopBarComponent implements OnInit {
 	public scales: number[] = [12, 13, 14, 15, 16];
 	public currentTheme?: SchemeColor;
 	public currentScheme?: string;
-	public currentScale: number = 14;
 	public menuVisible: boolean = true;
 	public filteredItems: LeftMenuItem[] = [];
 
@@ -92,6 +91,7 @@ export class TopBarComponent implements OnInit {
 
 	public ngOnInit(): void {
 		this.themeColor = [
+			{ label: 'Confiança', value: 'var(--custom-500)', class: 'custom' },
 			{ label: 'Indígo', value: 'var(--indigo-500)', class: 'indigo' },
 			{ label: 'Azul', value: 'var(--blue-500)', class: 'blue' },
 			{ label: 'Roxo', value: 'var(--purple-500)', class: 'purple' },
@@ -102,7 +102,6 @@ export class TopBarComponent implements OnInit {
 			{ label: 'Rosa', value: 'var(--pink-500)', class: 'pink' },
 			{ label: 'Vermelho', value: 'var(--red-500)', class: 'red' },
 			{ label: 'Amarelo', value: 'var(--yellow-500)', class: 'yellow' },
-			{ label: 'Confiança', value: 'var(--custom-500)', class: 'custom' },
 		];
 
 		this.schemeColor = [
@@ -112,33 +111,12 @@ export class TopBarComponent implements OnInit {
 
 		this.onChangeSchemeColor(this.getSchemeColor());
 		this.onChangeThemeColor(this.getThemeColor());
-		this.onChangeScale(this.getScale());
-	}
 
-	public getCurrentScale(scale: number): boolean {
-		return scale === this.currentScale;
+		console.log(this.items, this.filteredItems);
 	}
 
 	public getCurrentThemeColor(theme: SchemeColor): boolean {
 		return theme?.value == this.currentTheme?.value;
-	}
-
-	public getDisabledDecrementScale(): boolean {
-		return this.currentScale === this.scales[0];
-	}
-
-	public getDisabledIncrementScale(): boolean {
-		return this.currentScale === this.scales[this.scales?.length - 1];
-	}
-
-	private getScale(): number {
-		const localScale: string | null = localStorage?.getItem('_sca')
-
-		if (localScale) {
-			return Number(localScale);
-		} else {
-			return this.scales?.[2] ?? 14;
-		}
 	}
 
 	private getSchemeColor(): SchemeColor {
@@ -185,28 +163,6 @@ export class TopBarComponent implements OnInit {
 		if (this.currentScheme) {
 			localStorage?.setItem('_th', JSON.stringify(theme));
 		}
-	}
-
-	private onChangeScale(scale: number): void {
-		document.documentElement.style.fontSize = `${scale}px`;
-
-		this.currentScale = scale;
-
-		if (this.currentScheme) {
-			localStorage?.setItem('_sca', scale?.toString());
-		}
-	}
-
-	public onDecrementScale(): void {
-		this.currentScale--;
-
-		this.onChangeScale(this.currentScale);
-	}
-
-	public onIncrementScale(): void {
-		this.currentScale++;
-
-		this.onChangeScale(this.currentScale);
 	}
 
 	private onResize(): void {

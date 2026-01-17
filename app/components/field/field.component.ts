@@ -241,7 +241,7 @@ export class FieldComponent {
 	public getLabelByHierarchy(event: any): any {
 		let item: string[] = [];
 
-		if (event && (event instanceof Object)) {
+		if (event && event?.parent && (event instanceof Object)) {
 			event.label = this.getLabelParent(event, item)?.reverse()?.join(' > ');
 		}
 
@@ -249,13 +249,17 @@ export class FieldComponent {
 	}
 
 	public getLabelParent(item: any, finalItem: string[]): string[] {
-		finalItem?.push(item?.name);
+		if (this.autoCompleteLabel) {
+			finalItem?.push(item?.[this.autoCompleteLabel]);
 
-		if (item?.parent?.createdAt) {
-			return this.getLabelParent(item?.parent, finalItem);
+			if (item?.parent?.createdAt) {
+				return this.getLabelParent(item?.parent, finalItem);
+			}
+
+			return finalItem;
 		}
 
-		return finalItem;
+		return [''];
 	}
 
 	public getLabelSelected(item: any): string {
@@ -400,21 +404,7 @@ export class FieldComponent {
 	}
 
 	public async mySearch(event?: AutoCompleteCompleteEvent): Promise<void> {
-		this.mySearchOnItems(event);
-
 		this.onSearch.emit(event);
-	}
-
-	private mySearchOnItems(event?: AutoCompleteCompleteEvent): void {
-		let returnValue: number = 0;
-
-		try {
-			returnValue = Number(event?.query);
-		} catch { }
-
-		if (!Number.isNaN(returnValue) && event?.query) {
-			(event.query as any) = returnValue;
-		}
 	}
 
 	public mySelect(event: AutoCompleteSelectEvent): void {

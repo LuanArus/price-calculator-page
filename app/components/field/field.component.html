@@ -5,9 +5,11 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [suggestions]="items" [group]="group" [fluid]="fluid"
-                    [disabled]="disabled" [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body" [optionLabel]="getLabelSelected"
-                    [optionDisabled]="'disabled'" [dropdown]="true" [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
+                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [suggestions]="items" [group]="group" [fluid]="fluid" [disabled]="disabled"
+                    [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body"
+                    [optionLabel]="getLabelSelected" [optionDisabled]="'disabled'" [dropdown]="true"
+                    [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
                     (onSelect)="mySelect($event)" (onClear)="myClear()" (input)="myInputAutoComplete()">
 
                     <ng-template pTemplate="group" let-group>
@@ -40,8 +42,9 @@
 
                     <ng-template pTemplate="footer" *ngIf="(onAutoCompleteNew?.observers?.length ?? 0) > 0">
                         <div class="new-register">
-                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'" [type]="ButtonType.Button" [styleClass]="'p-button-secondary'"
-                                [fluid]="false" (onClick)="myAutoCompleteNew(model)"></app-button>
+                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'"
+                                [type]="ButtonType.Button" [styleClass]="'p-button-secondary'" [fluid]="false"
+                                (onClick)="myAutoCompleteNew(model)"></app-button>
                         </div>
                     </ng-template>
                 </p-autocomplete>
@@ -50,9 +53,11 @@
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [suggestions]="items" [group]="group" [fluid]="fluid"
-                    [disabled]="disabled" [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body" [optionLabel]="getLabelSelected"
-                    [optionDisabled]="'disabled'" [dropdown]="true" [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
+                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [suggestions]="items" [group]="group" [fluid]="fluid" [disabled]="disabled"
+                    [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body"
+                    [optionLabel]="getLabelSelected" [optionDisabled]="'disabled'" [dropdown]="true"
+                    [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
                     (onSelect)="mySelect($event)" (onClear)="myClear()" (input)="myInputAutoComplete()">
 
                     <ng-template pTemplate="group" let-group>
@@ -85,8 +90,9 @@
 
                     <ng-template pTemplate="footer" *ngIf="(onAutoCompleteNew?.observers?.length ?? 0) > 0">
                         <div class="new-register">
-                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'" [type]="ButtonType.Button" [styleClass]="'p-button-secondary'"
-                                [fluid]="false" (onClick)="myAutoCompleteNew(model)"></app-button>
+                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'"
+                                [type]="ButtonType.Button" [styleClass]="'p-button-secondary'" [fluid]="false"
+                                (onClick)="myAutoCompleteNew(model)"></app-button>
                         </div>
                     </ng-template>
                 </p-autocomplete>
@@ -98,15 +104,17 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
-                    [fluid]="fluid" [disabled]="disabled" (onInput)="myInput($event)" (onChange)="myChange($event)" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [minFractionDigits]="2" [maxFractionDigits]="2" [fluid]="fluid" [disabled]="disabled"
+                    (onInput)="myInput($event)" (onChange)="myChange($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
-                    [fluid]="fluid" [disabled]="disabled" (onInput)="myInput($event)" (onChange)="myChange($event)" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [minFractionDigits]="2" [maxFractionDigits]="2" [fluid]="fluid" [disabled]="disabled"
+                    (onInput)="myInput($event)" (onChange)="myChange($event)" />
             </div>
         </div>
 
@@ -115,15 +123,19 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode"
-                    showIcon iconDisplay="input" appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true" (onBlur)="validateDate(datepicker)"></p-datepicker>
+                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode" showIcon iconDisplay="input"
+                    appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true"
+                    (onBlur)="validateDate(datepicker)"></p-datepicker>
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode"
-                    showIcon iconDisplay="input" appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true" (onBlur)="validateDate(datepicker)"></p-datepicker>
+                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode" showIcon iconDisplay="input"
+                    appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true"
+                    (onBlur)="validateDate(datepicker)"></p-datepicker>
             </div>
         </div>
 
@@ -132,15 +144,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="18" [disabled]="disabled"
-                    (input)="myInputDocument($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="18" [disabled]="disabled" (input)="myInputDocument($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="18" [disabled]="disabled"
-                    (input)="myInputDocument($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="18" [disabled]="disabled" (input)="myInputDocument($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -149,15 +161,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="16" [disabled]="disabled"
-                    (input)="myInputPhone($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="16" [disabled]="disabled" (input)="myInputPhone($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="16" [disabled]="disabled"
-                    (input)="myInputPhone($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="16" [disabled]="disabled" (input)="myInputPhone($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -166,15 +178,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="9" [disabled]="disabled"
-                    (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="9" [disabled]="disabled" (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="9" [disabled]="disabled"
-                    (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="9" [disabled]="disabled" (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -183,13 +195,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [fluid]="fluid" [disabled]="disabled" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [fluid]="fluid" [disabled]="disabled" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [fluid]="fluid" [disabled]="disabled" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [fluid]="fluid" [disabled]="disabled" />
             </div>
         </div>
 
@@ -198,15 +212,17 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [toggleMask]="true"
-                    [feedback]="passwordFeedback" (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
+                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [toggleMask]="true" [feedback]="passwordFeedback"
+                    (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [toggleMask]="true"
-                    [feedback]="passwordFeedback" (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
+                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [toggleMask]="true" [feedback]="passwordFeedback"
+                    (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
             </div>
         </div>
 
@@ -215,8 +231,9 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder"
-                    [maxSelectedLabels]="3" appendTo="body" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
+                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items"
+                    [(ngModel)]="model" [placeholder]="placeholder" [maxSelectedLabels]="3" appendTo="body"
+                    [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
                     [selectionLimit]="selectLimit" (onPanelShow)="mySelectPanelShow()" (onChange)="myChange($event)">
                     <ng-template pTemplate="item" let-item>
                         <div class="select-option">
@@ -265,8 +282,9 @@
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder"
-                    [maxSelectedLabels]="3" appendTo="body" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
+                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items"
+                    [(ngModel)]="model" [placeholder]="placeholder" [maxSelectedLabels]="3" appendTo="body"
+                    [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
                     [selectionLimit]="selectLimit" (onPanelShow)="mySelectPanelShow()" (onChange)="myChange($event)">
 
                     <ng-template pTemplate="item" let-item>
@@ -319,8 +337,9 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder" appendTo="body"
-                    [filter]="true" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel">
+                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model"
+                    [placeholder]="placeholder" appendTo="body" [filter]="true" [fluid]="fluid" [disabled]="disabled"
+                    [optionValue]="selectValue" [optionLabel]="selectLabel">
                     <ng-template pTemplate="empty">
                         <div class="p-disabled">
                             Nenhum registro encontrado
@@ -337,8 +356,9 @@
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder" appendTo="body"
-                    [filter]="true" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel">
+                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model"
+                    [placeholder]="placeholder" appendTo="body" [filter]="true" [fluid]="fluid" [disabled]="disabled"
+                    [optionValue]="selectValue" [optionLabel]="selectLabel">
                     <ng-template pTemplate="empty">
                         <div class="p-disabled">
                             Nenhum registro encontrado
@@ -358,15 +378,17 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [maxlength]="maxLength"
-                    (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
+                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [maxlength]="maxLength" (keydown.enter)="myKeyDownEnter($event)"
+                    (blur)="myBlur($event)" (input)="myInput($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [maxlength]="maxLength"
-                    (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
+                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [maxlength]="maxLength" (keydown.enter)="myKeyDownEnter($event)"
+                    (blur)="myBlur($event)" (input)="myInput($event)" />
             </div>
         </div>
 
@@ -379,52 +401,10 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [suggestions]="items" [group]="group" [fluid]="fluid"
-                    [disabled]="disabled" [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body" [optionLabel]="getLabelSelected"
-                    [optionDisabled]="'disabled'" (completeMethod)="mySearch($event)" (onSelect)="mySelect($event)" (onClear)="myClear()" (input)="myInputAutoComplete()">
-
-                    <ng-template pTemplate="group" let-group>
-                        <span>{{ group?.label }}</span>
-                    </ng-template>
-
-                    <ng-template pTemplate="item" let-item>
-                        <div class="autocomplete-option">
-                            <span *ngIf="item?.icon" [class]="item?.icon"></span>
-                            <div class="flex option">
-                                <div *ngIf="!item?.noRegisters && getValue(item)">
-                                    {{ getValue(item) }}
-                                </div>
-
-                                <div *ngIf="!item?.noRegisters && getValue(item)">
-                                    &nbsp; - &nbsp;
-                                </div>
-
-                                <div *ngIf="!item?.noRegisters">
-                                    {{ getLabel(item) }}
-                                </div>
-
-                                <div *ngIf="item?.noRegisters">
-                                    Nenhum registro encontrado
-                                </div>
-                            </div>
-                        </div>
-                    </ng-template>
-
-                    <ng-template pTemplate="footer" *ngIf="(onAutoCompleteNew?.observers?.length ?? 0) > 0">
-                        <div class="new-register">
-                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'" [type]="ButtonType.Button" [styleClass]="'p-button-secondary'"
-                                [fluid]="false" (onClick)="myAutoCompleteNew(model)"></app-button>
-                        </div>
-                    </ng-template>
-                </p-autocomplete>
-
-                <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
-            </p-iconfield>
-
-            <div *ngIf="!icon">
-                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [suggestions]="items" [group]="group" [fluid]="fluid"
-                    [disabled]="disabled" [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body" [optionLabel]="getLabelSelected"
-                    [optionDisabled]="'disabled'" [dropdown]="true" [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
+                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [suggestions]="items" [group]="group" [fluid]="fluid" [disabled]="disabled"
+                    [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body"
+                    [optionLabel]="getLabelSelected" [optionDisabled]="'disabled'" (completeMethod)="mySearch($event)"
                     (onSelect)="mySelect($event)" (onClear)="myClear()" (input)="myInputAutoComplete()">
 
                     <ng-template pTemplate="group" let-group>
@@ -456,8 +436,56 @@
 
                     <ng-template pTemplate="footer" *ngIf="(onAutoCompleteNew?.observers?.length ?? 0) > 0">
                         <div class="new-register">
-                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'" [type]="ButtonType.Button" [styleClass]="'p-button-secondary'"
-                                [fluid]="false" (onClick)="myAutoCompleteNew(model)"></app-button>
+                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'"
+                                [type]="ButtonType.Button" [styleClass]="'p-button-secondary'" [fluid]="false"
+                                (onClick)="myAutoCompleteNew(model)"></app-button>
+                        </div>
+                    </ng-template>
+                </p-autocomplete>
+
+                <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
+            </p-iconfield>
+
+            <div *ngIf="!icon">
+                <p-autocomplete #autocomplete [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [suggestions]="items" [group]="group" [fluid]="fluid" [disabled]="disabled"
+                    [placeholder]="placeholder" [showClear]="true" [emptyMessage]="'Buscando...'" appendTo="body"
+                    [optionLabel]="getLabelSelected" [optionDisabled]="'disabled'" [dropdown]="true"
+                    [dropdownIcon]="'fas fa-search'" [dropdownMode]="'current'" (completeMethod)="mySearch($event)"
+                    (onSelect)="mySelect($event)" (onClear)="myClear()" (input)="myInputAutoComplete()">
+
+                    <ng-template pTemplate="group" let-group>
+                        <span>{{ group?.label }}</span>
+                    </ng-template>
+
+                    <ng-template pTemplate="item" let-item>
+                        <div class="autocomplete-option">
+                            <span *ngIf="item?.icon" [class]="item?.icon"></span>
+                            <div class="flex option">
+                                <div *ngIf="!item?.noRegisters && getValue(item)">
+                                    {{ getValue(item) }}
+                                </div>
+
+                                <div *ngIf="!item?.noRegisters && getValue(item)">
+                                    &nbsp; - &nbsp;
+                                </div>
+
+                                <div *ngIf="!item?.noRegisters">
+                                    {{ getLabel(item) }}
+                                </div>
+
+                                <div *ngIf="item?.noRegisters">
+                                    Nenhum registro encontrado
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="footer" *ngIf="(onAutoCompleteNew?.observers?.length ?? 0) > 0">
+                        <div class="new-register">
+                            <app-button [label]="'Cadastrar um novo registro'" [icon]="'fas fa-plus'"
+                                [type]="ButtonType.Button" [styleClass]="'p-button-secondary'" [fluid]="false"
+                                (onClick)="myAutoCompleteNew(model)"></app-button>
                         </div>
                     </ng-template>
                 </p-autocomplete>
@@ -469,15 +497,17 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
-                    [fluid]="fluid" [disabled]="disabled" (onInput)="myInput($event)" (onChange)="myChange($event)" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [minFractionDigits]="2" [maxFractionDigits]="2" [fluid]="fluid" [disabled]="disabled"
+                    (onInput)="myInput($event)" (onChange)="myChange($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
-                    [fluid]="fluid" [disabled]="disabled" (onInput)="myInput($event)" (onChange)="myChange($event)" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [minFractionDigits]="2" [maxFractionDigits]="2" [fluid]="fluid" [disabled]="disabled"
+                    (onInput)="myInput($event)" (onChange)="myChange($event)" />
             </div>
         </div>
 
@@ -486,15 +516,19 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode"
-                    showIcon iconDisplay="input" appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true" (onBlur)="validateDate(datepicker)"></p-datepicker>
+                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode" showIcon iconDisplay="input"
+                    appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true"
+                    (onBlur)="validateDate(datepicker)"></p-datepicker>
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode"
-                    showIcon iconDisplay="input" appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true" (onBlur)="validateDate(datepicker)"></p-datepicker>
+                <p-datepicker #datepicker [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model"
+                    [fluid]="fluid" [disabled]="disabled" [selectionMode]="dateMode" showIcon iconDisplay="input"
+                    appendTo="body" dateFormat="dd/mm/yy" [showButtonBar]="true"
+                    (onBlur)="validateDate(datepicker)"></p-datepicker>
             </div>
         </div>
 
@@ -503,15 +537,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="18" [disabled]="disabled"
-                    (input)="myInputDocument($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="18" [disabled]="disabled" (input)="myInputDocument($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="18" [disabled]="disabled"
-                    (input)="myInputDocument($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="18" [disabled]="disabled" (input)="myInputDocument($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -520,15 +554,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="16" [disabled]="disabled"
-                    (input)="myInputPhone($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="16" [disabled]="disabled" (input)="myInputPhone($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="16" [disabled]="disabled"
-                    (input)="myInputPhone($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="16" [disabled]="disabled" (input)="myInputPhone($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -537,15 +571,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="9" [disabled]="disabled"
-                    (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="9" [disabled]="disabled" (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" maxlength="9" [disabled]="disabled"
-                    (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
+                <input pInputText [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    maxlength="9" [disabled]="disabled" (input)="myInputZipCode($event)" (blur)="myBlur($event)" />
             </div>
         </div>
 
@@ -554,13 +588,15 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [fluid]="fluid" [disabled]="disabled" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [fluid]="fluid" [disabled]="disabled" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal" [fluid]="fluid" [disabled]="disabled" />
+                <p-inputnumber [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" mode="decimal"
+                    [fluid]="fluid" [disabled]="disabled" />
             </div>
         </div>
 
@@ -569,15 +605,17 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [toggleMask]="true"
-                    [feedback]="passwordFeedback" (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
+                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [toggleMask]="true" [feedback]="passwordFeedback"
+                    (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [toggleMask]="true"
-                    [feedback]="passwordFeedback" (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
+                <p-password [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [toggleMask]="true" [feedback]="passwordFeedback"
+                    (keydown.enter)="myKeyDownEnter($event)" (onBlur)="myBlur($event)" />
             </div>
         </div>
 
@@ -586,8 +624,9 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder"
-                    [maxSelectedLabels]="3" appendTo="body" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
+                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items"
+                    [(ngModel)]="model" [placeholder]="placeholder" [maxSelectedLabels]="3" appendTo="body"
+                    [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
                     [selectionLimit]="selectLimit" (onPanelShow)="mySelectPanelShow()" (onChange)="myChange($event)">
 
                     <ng-template pTemplate="item" let-item>
@@ -637,8 +676,9 @@
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder"
-                    [maxSelectedLabels]="3" appendTo="body" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
+                <p-multiselect #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items"
+                    [(ngModel)]="model" [placeholder]="placeholder" [maxSelectedLabels]="3" appendTo="body"
+                    [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel"
                     [selectionLimit]="selectLimit" (onPanelShow)="mySelectPanelShow()" (onChange)="myChange($event)">
 
                     <ng-template pTemplate="item" let-item>
@@ -691,8 +731,9 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder" appendTo="body"
-                    [filter]="true" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel">
+                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model"
+                    [placeholder]="placeholder" appendTo="body" [filter]="true" [fluid]="fluid" [disabled]="disabled"
+                    [optionValue]="selectValue" [optionLabel]="selectLabel">
                     <ng-template pTemplate="empty">
                         <div class="p-disabled">
                             Nenhum registro encontrado
@@ -709,8 +750,9 @@
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model" [placeholder]="placeholder" appendTo="body"
-                    [filter]="true" [fluid]="fluid" [disabled]="disabled" [optionValue]="selectValue" [optionLabel]="selectLabel">
+                <p-select #select [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [options]="items" [(ngModel)]="model"
+                    [placeholder]="placeholder" appendTo="body" [filter]="true" [fluid]="fluid" [disabled]="disabled"
+                    [optionValue]="selectValue" [optionLabel]="selectLabel">
                     <ng-template pTemplate="empty">
                         <div class="p-disabled">
                             Nenhum registro encontrado
@@ -730,28 +772,32 @@
             <p-iconfield *ngIf="icon">
                 <p-inputicon *ngIf="icon && iconPos == 'left'" [class]="icon" />
 
-                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [maxlength]="maxLength"
-                    [placeholder]="placeholder" (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
+                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [maxlength]="maxLength" [placeholder]="placeholder"
+                    (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
 
                 <p-inputicon *ngIf="icon && iconPos == 'right'" [class]="icon" />
             </p-iconfield>
 
             <div *ngIf="!icon">
-                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid" [disabled]="disabled" [maxlength]="maxLength"
-                    [placeholder]="placeholder" (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
+                <input [ngClass]="{ 'ng-invalid ng-dirty': !valid }" pInputText [(ngModel)]="model" [fluid]="fluid"
+                    [disabled]="disabled" [maxlength]="maxLength" [placeholder]="placeholder"
+                    (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)" />
             </div>
         </div>
 
         <!-- Editor -->
         <div *ngIf="type == FieldType.Editor">
-            <p-editor [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [disabled]="disabled" (keydown.enter)="myKeyDownEnter($event)"
-                (blur)="myBlur($event)" (input)="myInput($event)" [style]="{ height: '320px' }" />
+            <p-editor [ngClass]="{ 'ng-invalid ng-dirty': !valid }" [(ngModel)]="model" [disabled]="disabled"
+                (keydown.enter)="myKeyDownEnter($event)" (blur)="myBlur($event)" (input)="myInput($event)"
+                [style]="{ height: '320px' }" />
         </div>
 
         <!-- Switch -->
         <div *ngIf="type == FieldType.Switch" [class]="'flex ' + styleClass">
             <div class="switch">
-                <p-toggleswitch [(ngModel)]="model" [trueValue]="switchBoolean ? switchBoolean : 1" [falseValue]="switchBoolean ? !switchBoolean : 0" />
+                <p-toggleswitch [(ngModel)]="model" [trueValue]="switchBoolean ? switchBoolean : 1"
+                    [falseValue]="switchBoolean ? !switchBoolean : 0" />
             </div>
 
             <div>
@@ -761,7 +807,8 @@
 
         <!-- ColorPicker -->
         <div *ngIf="type == FieldType.ColorPicker">
-            <p-colorpicker [ngClass]="styleClass" [(ngModel)]="model" format="hex" defaultColor="#FFFFFF" [appendTo]="'body'" />
+            <p-colorpicker [ngClass]="styleClass" [(ngModel)]="model" format="hex" defaultColor="#FFFFFF"
+                [appendTo]="'body'" />
         </div>
 
         <!-- Slider -->
@@ -774,19 +821,22 @@
                 <div #slider class="slider">
                     <div class="slider-fields">
                         <div class="field-left">
-                            <app-field [type]="FieldType.Currency" [model]="model?.[0]" (modelChange)="myChangeSliderByField(0, $event)" [float]="false"
+                            <app-field [type]="FieldType.Currency" [model]="model?.[0]"
+                                (modelChange)="myChangeSliderByField(0, $event)" [float]="false"
                                 [fluid]="false"></app-field>
                         </div>
 
                         <div class="field-right">
-                            <app-field [type]="FieldType.Currency" [model]="model?.[1]" (modelChange)="myChangeSliderByField(1, $event)" [float]="false"
+                            <app-field [type]="FieldType.Currency" [model]="model?.[1]"
+                                (modelChange)="myChangeSliderByField(1, $event)" [float]="false"
                                 [fluid]="false"></app-field>
                         </div>
                     </div>
 
                     <div class="slider-bar">
                         <!-- (onChange)="myChangeSlider()" -->
-                        <p-slider [(ngModel)]="model" [range]="true" [animate]="true" [step]="1" [min]="sliderMinValue" [max]="sliderMaxValue" />
+                        <p-slider [(ngModel)]="model" [range]="true" [animate]="true" [step]="1" [min]="sliderMinValue"
+                            [max]="sliderMaxValue" />
                     </div>
                 </div>
             </div>
