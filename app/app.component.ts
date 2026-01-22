@@ -83,7 +83,9 @@ export class AppComponent {
 		this.deferredPrompt = e;
 
 		setTimeout(() => {
-			this.showInstallDrawer = true;
+			if (this.mainService.isMobile()) {
+				this.showInstallDrawer = true;
+			}
 		}, 250);
 	}
 

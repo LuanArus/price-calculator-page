@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1769124778371,
+  "timestamp": 1769125225455,
   "index": "/price-calculator-page/index.html",
   "assetGroups": [
     {
@@ -29,7 +29,7 @@
         "/price-calculator-page/chunk-MG3ERZGY.js",
         "/price-calculator-page/chunk-UBNTXNNJ.js",
         "/price-calculator-page/index.html",
-        "/price-calculator-page/main-HQJNAUC2.js",
+        "/price-calculator-page/main-IZBOTPJD.js",
         "/price-calculator-page/manifest.webmanifest",
         "/price-calculator-page/polyfills-SCHOHYNV.js",
         "/price-calculator-page/styles-IJHPEZOL.css"
@@ -140,8 +140,8 @@
     "/price-calculator-page/chunk-MG3ERZGY.js": "86e7eabee960bc32d69c21b03224020787d6c09a",
     "/price-calculator-page/chunk-UBNTXNNJ.js": "386d832a8b4a0184dec01da055ba62fe05e04bb1",
     "/price-calculator-page/index.html": "08fa5e26c662c1105ed8643058321f6d0d96e516",
-    "/price-calculator-page/main-HQJNAUC2.js": "4f622d6f00fdfbedb3e1e3aea9b0166740309628",
-    "/price-calculator-page/manifest.webmanifest": "c1e10afd4fcca0eb257521dc436dce755e2a6c84",
+    "/price-calculator-page/main-IZBOTPJD.js": "b4730244f1cfc60bdf13ee5bb452f5c66be21240",
+    "/price-calculator-page/manifest.webmanifest": "df74253baeff81ab0a50fbec7915c7fcad35b10d",
     "/price-calculator-page/media/fa-brands-400-NIRQQVKO.ttf": "e8d6db5592d1da793062a2fd2a6b835660784db2",
     "/price-calculator-page/media/fa-brands-400-WCET5WHB.woff2": "3a9a3efe266a4f329bc86e2bac22b7185ff0cd45",
     "/price-calculator-page/media/fa-duotone-900-ABQ7T55C.ttf": "34bbaeb2fb6e06d1eae6ea0cd34def1d07cfd1c2",

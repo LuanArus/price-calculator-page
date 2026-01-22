@@ -6,6 +6,7 @@
     "display": "standalone",
     "scope": "/price-calculator-page/",
     "start_url": "/price-calculator-page/",
+    "version": "1.3",
     "icons": [
         {
             "src": "assets/icons/72.png",
