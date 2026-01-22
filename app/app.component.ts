@@ -10,6 +10,7 @@ import { MainService } from '@controller/main.service';
 import { DynamicObject } from './models/interfaces/_dynamicobject';
 import { AppDynamicDrawerModule } from './components/dynamicdrawer/dynamicdrawer.module';
 import { filter, take } from 'rxjs/operators';
+import { DrawerModule } from 'primeng/drawer';
 
 @Component({
 	standalone: true,
@@ -19,6 +20,7 @@ import { filter, take } from 'rxjs/operators';
 		AppDynamicDrawerModule,
 		CommonModule,
 		ConfirmDialogModule,
+		DrawerModule,
 		RouterOutlet,
 		TourPrimeNgModule,
 	],
@@ -33,7 +35,9 @@ export class AppComponent {
 	public blockUI: boolean = false;
 	public dynamicObjects?: DynamicObject[];
 	public deferredPrompt: any = null;
-	public showInstallButton: boolean = false;
+	public showInstallDrawer: boolean = false;
+	public isIOS: boolean = false;
+	public isInStandaloneMode: boolean = false;
 
 	@ViewChild('container', { read: ViewContainerRef })
 	container!: ViewContainerRef;
@@ -62,31 +66,38 @@ export class AppComponent {
 		this.mainService.dynamicObjects?.asObservable()?.subscribe((objects: DynamicObject[]) => {
 			this.dynamicObjects = objects;
 		});
+
+		this.checkPhone();
 	}
 
 	ngOnInit() { }
 
-	@HostListener('window:beforeinstallprompt', ['$event'])
-	public onBeforeInstallPrompt(e: Event) {
-		e.preventDefault(); // impede o Chrome de mostrar o banner automático
-		this.deferredPrompt = e;
-		this.showInstallButton = true; // você controla sua telinha aqui
+	public checkPhone(): void {
+		this.isIOS = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+		this.isInStandaloneMode = ('standalone' in window.navigator && (window.navigator as any).standalone) || window.matchMedia('(display-mode: standalone)').matches;
 	}
 
-	public async onInstallApp() {
+	@HostListener('window:beforeinstallprompt', ['$event'])
+	public onBeforeInstallPrompt(e: Event): void {
+		e.preventDefault();
+		this.deferredPrompt = e;
+
+		setTimeout(() => {
+			this.showInstallDrawer = true;
+		}, 250);
+	}
+
+	public onInstallApp(): void {
 		if (!this.deferredPrompt) return;
 
 		this.deferredPrompt.prompt();
-		const result = await this.deferredPrompt.userChoice;
-
-		if (result.outcome === 'accepted') {
-			console.log('Usuário aceitou instalar');
-		} else {
-			console.log('Usuário recusou instalar');
-		}
 
 		this.deferredPrompt = null;
-		this.showInstallButton = false;
+		this.showInstallDrawer = false;
+	}
+
+	public onShowHideInstallDrawer(): void {
+		this.showInstallDrawer = false;
 	}
 
 }

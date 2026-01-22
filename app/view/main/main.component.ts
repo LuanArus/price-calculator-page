@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MainService } from '@controller/main.service';
 import { PatternComponent } from '@view/pattern/pattern.component';
 import { LeftMenuItem } from 'src/app/components/leftmenu/leftmenu.component';
@@ -17,7 +17,9 @@ export class MainComponent extends PatternComponent {
 	public fullScreen: boolean = false;
 	public imagesFullScreen: any[] = [];
 	public imagePopup?: any;
+	// public menuVisible: boolean = true;
 
+	// @ViewChild('leftMenu', { static: true }) leftMenu!: ElementRef;
 	@ViewChild('dialogRequestLog') public dialogRequestLog?: Dialog;
 
 	constructor(public override mainService: MainService,
@@ -48,6 +50,10 @@ export class MainComponent extends PatternComponent {
 		if (this.activatedRoute?.snapshot?.queryParamMap?.get('checkRoute')) {
 			this.goToFirstAllowedRoute();
 		}
+
+		// this.mainService?.menu?.subscribe((value: boolean) => {
+		// 	this.menuVisible = value;
+		// })
 	}
 
 	protected override canRegisterClose(): void { }
@@ -127,6 +133,19 @@ export class MainComponent extends PatternComponent {
 			this.router?.navigate(firstAllowedRoute?.routerLink);
 		}
 	}
+
+	// @HostListener('document:click', ['$event'])
+	// onClickOutsideMenu(event: MouseEvent) {
+	// 	if (!this.menuVisible) return;
+
+	// 	const clickedInside = this.leftMenu?.nativeElement?.contains(event.target);
+
+	// 	console.log(clickedInside, this.mainService?.isMobile())
+
+	// 	if (!clickedInside && this.mainService?.isMobile()) {
+	// 		this.mainService?.menu?.next(true);
+	// 	}
+	// }
 
 	public async onNew(): Promise<void> { }
 

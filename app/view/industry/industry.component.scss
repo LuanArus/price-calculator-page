@@ -1,7 +1,7 @@
 .industry {
     .p-tabpanels {
         overflow-y: scroll;
-        max-height: calc(100vh - 250px);
+        max-height: calc(100vh - 280px);
     }
 
     .tab {
@@ -10,9 +10,7 @@
     }
 
     .fixed-bottombar {
-        // width: 100%;
         position: fixed;
-        // left: 0;
         bottom: 0;
         z-index: 100;
         min-height: 100px;

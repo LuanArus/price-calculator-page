@@ -4,8 +4,8 @@
     "theme_color": "#2b4d93",
     "background_color": "#2b4d93",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
+    "scope": "/price-calculator-page/",
+    "start_url": "/price-calculator-page/",
     "icons": [
         {
             "src": "assets/icons/72.png",

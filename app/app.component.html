@@ -4,10 +4,40 @@
 
 <app-dynamic-drawer [objects]="dynamicObjects"></app-dynamic-drawer>
 
-<div *ngIf="showInstallButton" class="install-banner">
-  <p>Instale nosso app no seu dispositivo 📲</p>
-  <button (click)="onInstallApp()">Instalar</button>
-</div>
+<p-drawer [(visible)]="showInstallDrawer" header="Instalação" position="bottom" [styleClass]="'install-drawer'">
+    <div class="drawer-content">
+        <div *ngIf="isIOS && !isInStandaloneMode; else androidMessage">
+            <div class="ios">
+                <span class="fas fa-mobile install-icon"></span>
+                <p>Instale nosso app no seu celular e tenha ele sempre na palma da mão</p>
+            </div>
+
+            <div class="ios-instructions">
+                <ol>
+                    <li>Toque no botão <strong>Compartilhar</strong> ⬆️</li>
+                    <li>Selecione <strong>Adicionar à Tela de Início</strong></li>
+                </ol>
+            </div>
+        </div>
+
+        <ng-template #androidMessage>
+            <div class="android">
+                <span class="fas fa-mobile install-icon"></span>
+                <p>Instale nosso app no seu celular e tenha ele sempre na palma da mão</p>
+            </div>
+        </ng-template>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div *ngIf="isIOS; else androidButton" class="drawer-footer">
+            <app-button [label]="'Fechar'" [type]="ButtonType.Button" [icon]="'fas fa-times'" [fluid]="true" (onClick)="onShowHideInstallDrawer()"></app-button>
+        </div>
+
+        <ng-template #androidButton>
+            <app-button [label]="'Instalar App'" [type]="ButtonType.Button" [icon]="'fas fa-cloud-arrow-down'" [fluid]="true" (onClick)="onInstallApp()"></app-button>
+        </ng-template>
+    </ng-template>
+</p-drawer>
 
 <tour-step-template>
     <ng-template let-step="step">
