@@ -115,16 +115,16 @@ export class ServiceComponent extends PatternComponent {
 
 		// =(B9-B2-B6-(B9*B3)-(B9*B4))/B9
 		this.servicePreObject.b11 = this.evaluateValue(
-			100 * (this.servicePreObject.b9 - this.servicePreObject.b2 - this.servicePreObject.b6 - (this.servicePreObject.b9 * (this.servicePreObject.b3 / 100)) - (this.servicePreObject.b9 * (this.servicePreObject.b4 / 100))) / this.servicePreObject.b9
+			100 * (this.servicePreObject.b10 - this.servicePreObject.b2 - this.servicePreObject.b6 - (this.servicePreObject.b10 * (this.servicePreObject.b3 / 100)) - (this.servicePreObject.b10 * (this.servicePreObject.b4 / 100))) / this.servicePreObject.b10
 		);
 
 		// =B9-B2-B6-(B9*(B4+B3))
 		this.servicePreObject.b12 = this.evaluateValue(
-			this.servicePreObject.b9 - this.servicePreObject.b2 - this.servicePreObject.b6 - (this.servicePreObject.b9 * ((this.servicePreObject.b4 / 100) + (this.servicePreObject.b3 / 100)))
+			this.servicePreObject.b10 - this.servicePreObject.b2 - this.servicePreObject.b6 - (this.servicePreObject.b10 * ((this.servicePreObject.b4 / 100) + (this.servicePreObject.b3 / 100)))
 		);
 
 		// =B9
-		this.servicePreObject.b13 = this.evaluateValue(this.servicePreObject.b9);
+		this.servicePreObject.b13 = this.evaluateValue(this.servicePreObject.b10);
 	}
 
 	public calculatePostReform(): void {

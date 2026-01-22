@@ -111,8 +111,11 @@ export class TopBarComponent implements OnInit {
 
 		this.onChangeSchemeColor(this.getSchemeColor());
 		this.onChangeThemeColor(this.getThemeColor());
+<<<<<<< Updated upstream
 
 		console.log(this.items, this.filteredItems);
+=======
+>>>>>>> Stashed changes
 	}
 
 	public getCurrentThemeColor(theme: SchemeColor): boolean {

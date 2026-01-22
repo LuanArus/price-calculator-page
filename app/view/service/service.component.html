@@ -46,7 +46,7 @@
                   </div>
 
                   <div class="col-span-12">
-                     <app-field [label]="'Preço Final Sugerido'" [type]="FieldType.Currency" [(model)]="servicePreObject.b9" [icon]="'fas fa-brazilian-real-sign'"
+                     <app-field [label]="'Preço Final Sugerido (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="servicePreObject.b9" [icon]="'fas fa-brazilian-real-sign'"
                         [iconPos]="'left'" [disabled]="true"></app-field>
                   </div>
 
@@ -66,7 +66,7 @@
                   </div>
 
                   <div class="col-span-12">
-                     <app-field [label]="'Preço Final Praticado'" [type]="FieldType.Currency" [(model)]="servicePreObject.b13" [icon]="'fas fa-brazilian-real-sign'"
+                     <app-field [label]="'Preço Final Praticado (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="servicePreObject.b13" [icon]="'fas fa-brazilian-real-sign'"
                         [iconPos]="'left'" [disabled]="true"></app-field>
                   </div>
                </div>
@@ -111,7 +111,7 @@
                   </div>
 
                   <div class="col-span-12">
-                     <app-field [label]="'Preço Final Sugerido'" [type]="FieldType.Currency" [(model)]="servicePostObject.b9" [icon]="'fas fa-brazilian-real-sign'"
+                     <app-field [label]="'Preço Final Sugerido (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="servicePostObject.b9" [icon]="'fas fa-brazilian-real-sign'"
                         [iconPos]="'left'" [disabled]="true"></app-field>
                   </div>
 
@@ -131,7 +131,7 @@
                   </div>
 
                   <div class="col-span-12">
-                     <app-field [label]="'Preço Final Praticado'" [type]="FieldType.Currency" [(model)]="servicePostObject.b13" [icon]="'fas fa-brazilian-real-sign'"
+                     <app-field [label]="'Preço Final Praticado (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="servicePostObject.b13" [icon]="'fas fa-brazilian-real-sign'"
                         [iconPos]="'left'" [disabled]="true"></app-field>
                   </div>
                </div>
@@ -155,7 +155,7 @@
                Preço Final
             </p>
             <p class="value">
-               {{ ((currentTab == '0') ? servicePreObject.b9 : servicePostObject.b9) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+               {{ ((currentTab == '0') ? servicePreObject.b10 : servicePostObject.b10) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
             </p>
          </div>
       </div>

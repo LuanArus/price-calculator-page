@@ -1,10 +1,9 @@
-
 .drawer-container {
     width: 22.5rem !important;
 }
 
 .drawer-user {
-    padding: 1rem .5rem;
+    padding: 1rem 0.5rem;
 
     .content-item {
         margin-top: 2.5rem;
@@ -16,9 +15,15 @@
             border: 2px solid var(--p-primary-color);
             border-radius: 50%;
             padding: 3px;
-            width: 130px;
-            height: 130px;
             margin-bottom: 1rem;
+
+            span {
+                font-size: 5.75rem;
+                padding: 1.5rem 2.1rem;
+                background: #d3d2d2;
+                border-radius: 50%;
+                color: #eee;
+            }
         }
 
         .user-name {
@@ -45,12 +50,12 @@
 
             .user-company {
                 width: 100%;
-                padding: .5rem 1rem;
+                padding: 0.5rem 1rem;
                 display: flex;
 
                 .user-company-inner {
                     width: calc(100% - 50px);
-                    
+
                     .company-document {
                         font-size: 10px;
                     }
@@ -69,7 +74,7 @@
             .user-company:hover {
                 cursor: pointer;
                 background: var(--p-button-text-secondary-hover-background);
-                border-radius: .5rem;
+                border-radius: 0.5rem;
             }
 
             .selected-company {
@@ -89,13 +94,13 @@
     }
 
     h5 {
-        padding: 0 1rem .75rem 0;
+        padding: 0 1rem 0.75rem 0;
         font-weight: 600;
     }
 }
 
 .drawer-config {
-    padding: 1rem .5rem;
+    padding: 1rem 0.5rem;
 
     .content-item {
         margin-top: 2.5rem;
@@ -157,15 +162,20 @@
             }
 
             .topbar-user {
-                padding: 1px;
+                padding: 2px;
                 border: 2px solid var(--p-primary-color);
                 border-radius: 50%;
+                cursor: pointer;
 
-                img {
-                    height: 2.5rem;
-                    width: 2.5rem;
-                    min-width: 2.5rem;
-                    cursor: pointer;
+                span:before {
+                    content: "\f007";
+                    display: block;
+                    position: relative;
+                    font-size: 1.5rem;
+                    padding: 0.5rem 0.6rem;
+                    background: #d3d2d2;
+                    border-radius: 50%;
+                    color: #eee;
                 }
             }
         }

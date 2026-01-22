@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { APP_INITIALIZER, ErrorHandler, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, importProvidersFrom, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { route } from './app/app.module';
@@ -9,6 +9,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 import Aura from '@primeng/themes/aura';
 import { MainService } from '@controller/main.service';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export function initApp(mainService: MainService): () => void {
 	return () => {
@@ -47,6 +48,9 @@ bootstrapApplication(AppComponent, {
 		}),
 		ConfirmationService,
 		MessageService,
-		{ provide: APP_INITIALIZER, useFactory: initApp, deps: [MainService], multi: true, },
+		{ provide: APP_INITIALIZER, useFactory: initApp, deps: [MainService], multi: true, }, provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          }),
 	],
 }).catch((err) => console.error(err));
