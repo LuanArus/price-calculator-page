@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1769125225455,
+  "timestamp": 1769126022480,
   "index": "/price-calculator-page/index.html",
   "assetGroups": [
     {
@@ -67,8 +67,10 @@
         "/price-calculator-page/assets/fontawesome/webfonts/fa-v4compatibility.ttf",
         "/price-calculator-page/assets/fontawesome/webfonts/fa-v4compatibility.woff2",
         "/price-calculator-page/assets/icons/144.png",
+        "/price-calculator-page/assets/icons/192-maskable.png",
         "/price-calculator-page/assets/icons/192.png",
         "/price-calculator-page/assets/icons/48.png",
+        "/price-calculator-page/assets/icons/512-maskable.png",
         "/price-calculator-page/assets/icons/512.png",
         "/price-calculator-page/assets/icons/72.png",
         "/price-calculator-page/assets/icons/96.png",
@@ -116,8 +118,10 @@
     "/price-calculator-page/assets/fontawesome/webfonts/fa-v4compatibility.ttf": "e4e7d992206da506ebb45eeab102b6d99ce24024",
     "/price-calculator-page/assets/fontawesome/webfonts/fa-v4compatibility.woff2": "4da7a04451275b3c34ba2b76bee1b486e23b4c80",
     "/price-calculator-page/assets/icons/144.png": "ae4db421c8151aca1273c15b0c2d3f041c2212c1",
+    "/price-calculator-page/assets/icons/192-maskable.png": "a23ba8e8922916cf4dbdf4c884e7254bc7d8f5fe",
     "/price-calculator-page/assets/icons/192.png": "a23ba8e8922916cf4dbdf4c884e7254bc7d8f5fe",
     "/price-calculator-page/assets/icons/48.png": "887b5a091a9e00691f7c28ac3731bb44688e637b",
+    "/price-calculator-page/assets/icons/512-maskable.png": "01e16640d60166337ea917a93ccbcf3e6baf0564",
     "/price-calculator-page/assets/icons/512.png": "01e16640d60166337ea917a93ccbcf3e6baf0564",
     "/price-calculator-page/assets/icons/72.png": "2c883ed72dd55f7d5b00a8fe074a2b08f00e4bbc",
     "/price-calculator-page/assets/icons/96.png": "28f56fdc36ed92c21e2edb8d2c286290bf662ffc",
@@ -141,7 +145,7 @@
     "/price-calculator-page/chunk-UBNTXNNJ.js": "386d832a8b4a0184dec01da055ba62fe05e04bb1",
     "/price-calculator-page/index.html": "08fa5e26c662c1105ed8643058321f6d0d96e516",
     "/price-calculator-page/main-IZBOTPJD.js": "b4730244f1cfc60bdf13ee5bb452f5c66be21240",
-    "/price-calculator-page/manifest.webmanifest": "df74253baeff81ab0a50fbec7915c7fcad35b10d",
+    "/price-calculator-page/manifest.webmanifest": "6f21bdf019eded20cc76fd0aaaf94287fc4f6f93",
     "/price-calculator-page/media/fa-brands-400-NIRQQVKO.ttf": "e8d6db5592d1da793062a2fd2a6b835660784db2",
     "/price-calculator-page/media/fa-brands-400-WCET5WHB.woff2": "3a9a3efe266a4f329bc86e2bac22b7185ff0cd45",
     "/price-calculator-page/media/fa-duotone-900-ABQ7T55C.ttf": "34bbaeb2fb6e06d1eae6ea0cd34def1d07cfd1c2",
