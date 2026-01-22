@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, ViewChild, ViewContainerRef } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TourPrimeNgModule, TourService } from 'ngx-ui-tour-primeng';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -32,6 +32,8 @@ export class AppComponent {
 
 	public blockUI: boolean = false;
 	public dynamicObjects?: DynamicObject[];
+	public deferredPrompt: any = null;
+	public showInstallButton: boolean = false;
 
 	@ViewChild('container', { read: ViewContainerRef })
 	container!: ViewContainerRef;
@@ -63,5 +65,28 @@ export class AppComponent {
 	}
 
 	ngOnInit() { }
+
+	@HostListener('window:beforeinstallprompt', ['$event'])
+	public onBeforeInstallPrompt(e: Event) {
+		e.preventDefault(); // impede o Chrome de mostrar o banner automático
+		this.deferredPrompt = e;
+		this.showInstallButton = true; // você controla sua telinha aqui
+	}
+
+	public async onInstallApp() {
+		if (!this.deferredPrompt) return;
+
+		this.deferredPrompt.prompt();
+		const result = await this.deferredPrompt.userChoice;
+
+		if (result.outcome === 'accepted') {
+			console.log('Usuário aceitou instalar');
+		} else {
+			console.log('Usuário recusou instalar');
+		}
+
+		this.deferredPrompt = null;
+		this.showInstallButton = false;
+	}
 
 }

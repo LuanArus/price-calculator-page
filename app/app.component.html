@@ -4,6 +4,11 @@
 
 <app-dynamic-drawer [objects]="dynamicObjects"></app-dynamic-drawer>
 
+<div *ngIf="showInstallButton" class="install-banner">
+  <p>Instale nosso app no seu dispositivo 📲</p>
+  <button (click)="onInstallApp()">Instalar</button>
+</div>
+
 <tour-step-template>
     <ng-template let-step="step">
         <div class="tour" [style.width]="step?.stepDimensions?.width" [style.min-width]="step?.stepDimensions?.minWidth" [style.max-width]="step?.stepDimensions?.maxWidth">
