@@ -1,0 +1,454 @@
+.cdk-drag-preview {
+    outline: 3px dotted var(--p-primary-color);
+    outline-offset: 1px;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+
+    .shortcut-inner {
+        cursor: pointer;
+        flex: 0 0 auto;
+        width: 100px;
+        height: 100px;
+        background: var(--p-togglebutton-background);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        text-align: center;
+        position: relative;
+
+        span {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 90px;
+        }
+
+        .shortcut-button {
+            display: flex;
+            position: absolute;
+            z-index: 1;
+            width: 100px;
+            text-align: end;
+
+            .button-move {
+                background: var(--p-surface-100);
+                border: none;
+                height: 100px;
+                width: 100px;
+                border-radius: 1rem;
+                font-size: 4rem;
+                opacity: 0.4;
+                cursor: grab;
+                color: var(--p-surface-900);
+            }
+        }
+    }
+}
+
+.drawer-shortcut {
+    width: 40rem !important;
+
+    .p-drawer-header {
+        padding: 2rem 2rem 2rem 2.5rem;
+
+        .p-drawer-title {
+            font-size: 1.25rem;
+        }
+    }
+
+    .p-drawer-content {
+        .shortcut-item {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .drawer-footer {
+        display: flex;
+        justify-content: flex-end;
+
+        .button {
+            margin-left: 0.5rem;
+        }
+    }
+
+    .p-accordionheader {
+        span {
+            font-size: 1.25rem;
+        }
+    }
+
+    .accordion-header {
+        text-align: left;
+        width: 100%;
+        margin-left: 1rem;
+    }
+
+    @media screen and (max-width: 991px) {
+        width: 100% !important;
+    }
+}
+
+.customer-area {
+    .welcome {
+        padding: 0rem 1rem 2rem 1rem;
+
+        .user-name {
+            font-size: 2.25rem;
+        }
+    }
+
+    .table-companies {
+        padding: 2rem 0 0 0;
+    }
+
+    .card {
+        border-radius: 1rem;
+        background-color: var(--p-panel-background);
+
+        .card-inner {
+            padding: 1rem;
+            display: flex;
+            overflow: hidden;
+
+            .data {
+                width: calc(100% - 35px);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .data-inner-2 {
+                    align-items: flex-start;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                .title {
+                    margin-left: 1rem;
+
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                .value {
+                    margin-left: 1rem;
+                    font-size: 1.75rem;
+                    font-weight: 700;
+
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                .invalid {
+                    color: red;
+                }
+
+                .aditional {
+                    margin-left: 1rem;
+
+                    font-size: 0.75rem;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+            }
+
+            .button {
+                width: 35px;
+                text-align: end;
+
+                button {
+                    .p-button-label {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+
+            .vertical-bar {
+                width: 8px;
+                height: 80px;
+                border-radius: 2rem;
+
+                &.plan {
+                    background-color: var(--blue-300);
+                }
+
+                &.plan-type {
+                    background-color: var(--orange-300);
+                }
+
+                &.status {
+                    background-color: var(--red-300);
+                }
+
+                &.users {
+                    background-color: var(--green-300);
+                }
+
+                &.database-size {
+                    background-color: var(--teal-300);
+                }
+
+                &.images {
+                    background-color: var(--pink-300);
+                }
+
+                &.products {
+                    background-color: var(--yellow-300);
+                }
+
+                &.catalogs {
+                    background-color: var(--cyan-300);
+                }
+            }
+        }
+    }
+
+    .card-secondary {
+        border-radius: 1rem;
+
+        .p-panel {
+            border-radius: 1rem;
+        }
+
+        .p-panel-content {
+            padding: 0;
+        }
+
+        .card-inner {
+            padding: 1rem 1rem 1rem 1.5rem;
+
+            .restrict-buttons {
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem 0;
+
+                .button {
+                    margin-right: 0.5rem;
+                }
+
+                .restrict-buttons-left {
+                    display: flex;
+                    justify-content: start;
+                }
+
+                .restrict-buttons-right {
+                    justify-content: end;
+                }
+            }
+
+            .support {
+                padding: 1rem 0 0 0;
+
+                .title {
+                    display: flex;
+                    align-items: center;
+
+                    span {
+                        font-size: 1.5rem;
+                    }
+
+                    p {
+                        margin-left: 0.5rem;
+                    }
+                }
+
+                .title-other {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+
+                    span {
+                        font-size: 1.5rem;
+                    }
+
+                    a {
+                        margin-left: 0.5rem;
+                    }
+                }
+
+                .title-other:last-child {
+                    margin-bottom: 0;
+                }
+
+                .data {
+                    margin-top: 0.25rem;
+                }
+
+                .button {
+                    margin-top: 1.5rem;
+
+                    button {
+                        .p-button-label {
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+
+                .element {
+                    display: flex;
+                    align-items: center;
+
+                    margin: 0.5rem span {
+                        font-size: 1.5rem !important;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+
+            .shortcut-top {
+                display: flex;
+                justify-content: space-between;
+
+                .title {
+                    font-weight: 500;
+                }
+
+                .button {
+                    display: flex;
+
+                    app-button {
+                        margin-right: 0.5rem;
+                    }
+
+                    app-button:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .shortcut-container {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 1rem;
+                padding: 1rem 0;
+
+                .shortcut-inner {
+                    cursor: pointer;
+                    flex: 0 0 auto;
+                    width: 100px;
+                    height: 100px;
+                    background: var(--p-togglebutton-background);
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    user-select: none;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    text-align: center;
+                    position: relative;
+
+                    span {
+                        font-size: 2rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    p {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        width: 90px;
+                    }
+
+                    .shortcut-button {
+                        display: flex;
+                        position: absolute;
+                        z-index: 1;
+                        width: 100px;
+                        text-align: end;
+
+                        .button-move {
+                            background: var(--p-surface-100);
+                            border: none;
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 1rem;
+                            font-size: 4rem;
+                            opacity: 0.4;
+                            cursor: grab;
+                            color: var(--p-surface-900);
+                        }
+                    }
+                }
+
+                .shortcut-inner:hover {
+                    transform: scale(1.05);
+                }
+
+                .deleted {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .whatsapp-container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem 1rem 1rem;
+
+        .whatsapp-qrcode-container {
+            min-height: 242px;
+
+            .whatsapp-qrcode {
+                max-width: 242px;
+                min-height: 242px;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                padding: 1rem;
+                background: #fff;
+                border-radius: 1rem;
+                color: var(--p-primary-color);
+
+                .expired {
+                    filter: blur(5px);
+                }
+
+                .expired-title {
+                    position: absolute;
+                    font-weight: 600;
+                    padding: 1rem;
+                    border-radius: 2rem;
+                }
+            }
+        }
+
+        .whatsapp-button {
+            margin-top: 1rem;
+            text-align: center;
+
+            button {
+                .p-button-label {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}

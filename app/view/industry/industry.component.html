@@ -1,0 +1,163 @@
+<app-blockui [target]="blockUIPanel" [blocked]="blockUI" [message]="blockUIMessage" />
+
+<div *ngIf="!dynamicDrawerObject.visible" class="industry">
+   <p-tabs [(value)]="currentTab">
+      <p-tablist>
+         <p-tab class="tab" value="0">Pré Reforma</p-tab>
+         <p-tab class="tab" value="1">Pós Reforma</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+         <p-tabpanel value="0">
+            <div class="grid gap-2 grid-cols-12">
+               <div class="grid gap-2 col-span-12">
+                  <div class="col-span-12">
+                     <app-field [label]="'Custo de Produção / Aquisição'" [type]="FieldType.Currency" [(model)]="industryPreObject.b2" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Impostos'" [type]="FieldType.Currency" [(model)]="industryPreObject.b3" [icon]="'fas fa-percentage'" [iconPos]="'right'"
+                        (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Despesas Variáveis'" [type]="FieldType.Currency" [(model)]="industryPreObject.b4" [icon]="'fas fa-percentage'" [iconPos]="'right'"
+                        (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Desejada'" [type]="FieldType.Currency" [(model)]="industryPreObject.b5" [icon]="'fas fa-percentage'"
+                        [iconPos]="'right'" (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Custo Fixo'" [type]="FieldType.Currency" [(model)]="industryPreObject.b6" [icon]="'fas fa-brazilian-real-sign'" [iconPos]="'left'"
+                        (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Sugerido'" [type]="FieldType.Currency" [(model)]="industryPreObject.b7" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Desejada'" [type]="FieldType.Currency" [(model)]="industryPreObject.b8" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Final Sugerido (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="industryPreObject.b9" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Praticado'" [type]="FieldType.Currency" [icon]="'fas fa-brazilian-real-sign'" [(model)]="industryPreObject.b10"
+                        [iconPos]="'left'" (onInput)="calculatePreReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Alcançada'" [type]="FieldType.Currency" [(model)]="industryPreObject.b11" [icon]="'fas fa-percentage'"
+                        [iconPos]="'right'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Alcançada'" [type]="FieldType.Currency" [(model)]="industryPreObject.b12" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Final Praticado (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="industryPreObject.b13" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+               </div>
+            </div>
+         </p-tabpanel>
+         <p-tabpanel value="1">
+            <div class="grid gap-2 grid-cols-12">
+               <div class="grid gap-2 col-span-12">
+                  <div class="col-span-12">
+                     <app-field [label]="'Custo de Produção / Aquisição'" [type]="FieldType.Currency" [(model)]="industryPostObject.b2"
+                        [icon]="'fas fa-brazilian-real-sign'" [iconPos]="'left'" (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Impostos'" [type]="FieldType.Currency" [(model)]="industryPostObject.b3" [icon]="'fas fa-percentage'" [iconPos]="'right'"
+                        (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Despesas Variáveis'" [type]="FieldType.Currency" [(model)]="industryPostObject.b4" [icon]="'fas fa-percentage'"
+                        [iconPos]="'right'" (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Desejada'" [type]="FieldType.Currency" [(model)]="industryPostObject.b5" [icon]="'fas fa-percentage'"
+                        [iconPos]="'right'" (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Custo Fixo'" [type]="FieldType.Currency" [(model)]="industryPostObject.b6" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Sugerido'" [type]="FieldType.Currency" [(model)]="industryPostObject.b7" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Desejada'" [type]="FieldType.Currency" [(model)]="industryPostObject.b8" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Final Sugerido (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="industryPostObject.b9" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Praticado'" [type]="FieldType.Currency" [icon]="'fas fa-brazilian-real-sign'" [(model)]="industryPostObject.b10"
+                        [iconPos]="'left'" (onInput)="calculatePostReform()"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Alcançada'" [type]="FieldType.Currency" [(model)]="industryPostObject.b11" [icon]="'fas fa-percentage'"
+                        [iconPos]="'right'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Margem de Lucro Alcançada'" [type]="FieldType.Currency" [(model)]="industryPostObject.b12" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+
+                  <div class="col-span-12">
+                     <app-field [label]="'Preço Final Praticado (Nota Fiscal)'" [type]="FieldType.Currency" [(model)]="industryPostObject.b13" [icon]="'fas fa-brazilian-real-sign'"
+                        [iconPos]="'left'" [disabled]="true"></app-field>
+                  </div>
+               </div>
+            </div>
+         </p-tabpanel>
+      </p-tabpanels>
+   </p-tabs>
+
+   <div class="fixed-bottombar">
+      <div class="bottom-bar-container">
+         <div class="left">
+            <p class="title">
+               Margem de Lucro
+            </p>
+            <p class="value">
+               {{ (currentTab == '0') ? industryPreObject.b11 : industryPostObject.b11 }} %
+            </p>
+         </div>
+         <div class="left">
+            <p class="title">
+               Preço Final
+            </p>
+            <p class="value">
+               {{ ((currentTab == '0') ? industryPreObject.b10 : industryPostObject.b10) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+            </p>
+         </div>
+      </div>
+   </div>
+</div>

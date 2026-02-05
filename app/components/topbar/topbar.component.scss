@@ -1,0 +1,207 @@
+.drawer-container {
+    width: 22.5rem !important;
+}
+
+.drawer-user {
+    padding: 1rem 0.5rem;
+
+    .content-item {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .user-avatar {
+            border: 2px solid var(--p-primary-color);
+            border-radius: 50%;
+            padding: 3px;
+            margin-bottom: 1rem;
+
+            span {
+                font-size: 5.75rem;
+                padding: 1.5rem 2.1rem;
+                background: #d3d2d2;
+                border-radius: 50%;
+                color: #eee;
+            }
+        }
+
+        .user-name {
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .user-email {
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .container-terms {
+            .terms-of-use {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .container-company {
+            width: 100%;
+
+            .user-company {
+                width: 100%;
+                padding: 0.5rem 1rem;
+                display: flex;
+
+                .user-company-inner {
+                    width: calc(100% - 50px);
+
+                    .company-document {
+                        font-size: 10px;
+                    }
+                }
+
+                .change-label {
+                    width: 50px;
+                    font-size: 12px;
+                    justify-content: end;
+                    display: flex;
+                    align-items: center;
+                    color: var(--p-surface-400);
+                }
+            }
+
+            .user-company:hover {
+                cursor: pointer;
+                background: var(--p-button-text-secondary-hover-background);
+                border-radius: 0.5rem;
+            }
+
+            .selected-company {
+                color: var(--p-primary-color);
+            }
+        }
+
+        .button-logout {
+            width: 100%;
+            display: flex;
+            justify-content: end;
+        }
+    }
+
+    .content-item:first-child {
+        margin-top: 0;
+    }
+
+    h5 {
+        padding: 0 1rem 0.75rem 0;
+        font-weight: 600;
+    }
+}
+
+.drawer-config {
+    padding: 1rem 0.5rem;
+
+    .content-item {
+        margin-top: 2.5rem;
+    }
+
+    .content-item:first-child {
+        margin-top: 0;
+    }
+
+    h5 {
+        padding: 0 1rem 1.25rem 0;
+        font-weight: 600;
+    }
+}
+
+.topbar {
+    .topbar-container {
+        padding: 1rem;
+        // margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .topbar-start {
+            display: flex;
+            align-items: center;
+
+            .topbar-menu-button {
+                margin-right: 1rem;
+                border-radius: 50%;
+                width: 2.5rem;
+                height: 2.5rem;
+                background: transparent;
+                cursor: pointer;
+                user-select: none;
+
+                span {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .topbar-end {
+            display: flex;
+            align-items: center;
+
+            .topbar-search {
+                margin-right: 1.75rem;
+
+                input {
+                    border-radius: 2rem;
+                    box-shadow: none;
+                    width: 100%;
+                }
+            }
+
+            // .topbar-config {
+            //     margin-right: 1.75rem;
+            // }
+
+            .topbar-user {
+                padding: 2px;
+                border: 2px solid var(--p-primary-color);
+                border-radius: 50%;
+                cursor: pointer;
+
+                span:before {
+                    content: "\f007";
+                    display: block;
+                    position: relative;
+                    font-size: 1.5rem;
+                    padding: 0.5rem 0.6rem;
+                    background: #d3d2d2;
+                    border-radius: 50%;
+                    color: #eee;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .topbar-container {
+            // margin-bottom: 1rem;
+
+            .topbar-end {
+                .topbar-search {
+                    margin-right: 1rem;
+                }
+
+                // .topbar-config {
+                //     margin-right: 1rem;
+                // }
+            }
+        }
+
+        .topbar-route {
+            margin-bottom: 1rem;
+
+            .p-breadcrumb {
+                padding: 0 2.25rem;
+            }
+        }
+    }
+}

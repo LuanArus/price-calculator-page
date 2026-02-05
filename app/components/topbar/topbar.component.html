@@ -1,0 +1,87 @@
+<p-drawer [styleClass]="'drawer-container'" [(visible)]="configRightDrawer" header="Configurações" position="right">
+    <div class="drawer-content drawer-config">
+        <div class="content-item">
+            <h5>Tema</h5>
+
+            <p-selectbutton [options]="schemeColor" [(ngModel)]="currentScheme" optionLabel="label" optionValue="value"
+                [allowEmpty]="false" (onChange)="onChangeSchemeColor($event)">
+                <ng-template #item let-item>
+                    <div pTooltip="{{item?.label}}" tooltipPosition="top">
+                        <i [class]="item?.icon"></i> {{ item?.label }}
+                    </div>
+                </ng-template>
+            </p-selectbutton>
+        </div>
+
+        <div class="content-item">
+            <h5>Cor do Sistema</h5>
+
+            <div class="flex flex-wrap gap-4">
+                <div *ngFor="let theme of themeColor">
+                    <button class="p-button-rounded border-none h-8 w-8" [style]="'background: ' + theme?.value"
+                        pTooltip="{{theme?.label}}" tooltipPosition="top" (click)="onChangeThemeColor(theme)">
+                        <i *ngIf="getCurrentThemeColor(theme)" class="fas fa-check text-white"> </i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</p-drawer>
+
+<p-drawer [(visible)]="userRightDrawer" header="Usuário" position="right">
+    <div class="drawer-content drawer-user">
+        <div class="content-item">
+            <div class="user-avatar">
+                <span class="fas fa-user" (click)="onShowUser()"></span>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="container-terms">
+                <div class="terms-of-use">
+                    <app-button [label]="'Termos de Uso'" [icon]="'fas fa-file-pen'" [type]="ButtonType.Button"
+                        [noBackground]="true"></app-button>
+                </div>
+
+                <app-button [label]="'Políticas de Privacidade'" [icon]="'fas fa-file-shield'"
+                    [type]="ButtonType.Button" [noBackground]="true"></app-button>
+            </div>
+        </div>
+    </div>
+</p-drawer>
+
+<div class="topbar">
+    <div class="topbar-container">
+        <div class="topbar-start">
+            <button pButton icon="fas fa-bars" class="p-button-text p-button-secondary topbar-menu-button"
+                (click)="onShowHideMenu()"></button>
+
+            <div class="topbar-route">
+                <app-route [ngClass]="{'hidden': mainService.isMobile()}"></app-route>
+            </div>
+        </div>
+
+        <div class="topbar-end">
+            <div class="topbar-search">
+                <app-field [type]="FieldType.AutoComplete" [icon]="'fas fa-search'"
+                    [items]="filteredItems ? filteredItems : items" [group]="true" [float]="false"
+                    [autoCompleteClearAfterSelect]="true" [placeholder]="'Pesquisar...'" (onSearch)="onSearch($event)"
+                    (onSelect)="onSelectSearch($event)">
+                </app-field>
+            </div>
+
+            <div class="topbar-config">
+                <button pButton icon="fas fa-cog" class="p-button-secondary p-button-rounded"
+                    (click)="onShowConfigurations()"></button>
+            </div>
+
+            <!-- <div class="topbar-user">
+                <span class="fas fa-user" (click)="onShowUser()"></span>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="topbar-route">
+        <app-route [ngClass]="{'hidden': !mainService.isMobile()}"></app-route>
+    </div>
+</div>

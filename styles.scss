@@ -1,3 +1,7 @@
+@use "../node_modules/tailwindcss/base.css";
+@use "../node_modules/tailwindcss/components.css";
+@use "../node_modules/tailwindcss/utilities.css";
+
 @use "../src/app/app.component.scss";
 
 @use "../src/app/components/actionbar/actionbar.component.scss";
@@ -168,11 +172,10 @@
     --p-grid-item-border-color: var(--p-surface-200);
 
     .image-viewer-full-screen {
-
         .arrow,
         .close {
             background: var(--p-surface-100);
-            color: var(--p-button-text)
+            color: var(--p-button-text);
         }
 
         .arrow:hover,
@@ -192,18 +195,18 @@
     }
 
     .p-togglebutton {
-        padding: .25rem;
+        padding: 0.25rem;
 
         .p-togglebutton-content {
-            border-radius: .25rem;
-            padding: .25rem .5rem;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
         }
     }
 
     .ng-invalid-container {
-        padding: 1rem .25rem;
+        padding: 1rem 0.25rem;
         border: 1px solid var(--p-inputtext-invalid-border-color);
-        border-radius: .4rem;
+        border-radius: 0.4rem;
     }
 
     .ng-invalid {
@@ -211,11 +214,11 @@
     }
 
     .ng-dirty {
-        .p-datatable-thead>tr>th {
+        .p-datatable-thead > tr > th {
             color: var(--p-inputtext-invalid-border-color) !important;
         }
 
-        .p-datatable-tbody>tr>td {
+        .p-datatable-tbody > tr > td {
             color: var(--p-inputtext-invalid-border-color) !important;
         }
     }
@@ -234,7 +237,6 @@
                 background: transparent;
                 color: var(--p-button-text);
                 border: 1px solid var(--red-200);
-
             }
 
             .reject-button:hover {
@@ -291,11 +293,10 @@
     --p-grid-item-border-color: var(--p-surface-800);
 
     .image-viewer-full-screen {
-
         .arrow,
         .close {
             background: var(--p-surface-900);
-            color: var(--p-button-text)
+            color: var(--p-button-text);
         }
 
         .arrow:hover,
@@ -315,18 +316,18 @@
     }
 
     .p-togglebutton {
-        padding: .25rem;
+        padding: 0.25rem;
 
         .p-togglebutton-content {
-            border-radius: .25rem;
-            padding: .25rem .5rem;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
         }
     }
 
     .ng-invalid-container {
-        padding: 1rem .25rem;
+        padding: 1rem 0.25rem;
         border: 1px solid var(--p-inputtext-invalid-border-color);
-        border-radius: .4rem;
+        border-radius: 0.4rem;
     }
 
     .ng-invalid {
@@ -334,11 +335,11 @@
     }
 
     .ng-dirty {
-        .p-datatable-thead>tr>th {
+        .p-datatable-thead > tr > th {
             color: var(--p-inputtext-invalid-border-color) !important;
         }
 
-        .p-datatable-tbody>tr>td {
+        .p-datatable-tbody > tr > td {
             color: var(--p-inputtext-invalid-border-color) !important;
         }
     }
@@ -357,7 +358,6 @@
                 background: transparent;
                 color: var(--p-button-text);
                 border: 1px solid var(--red-800);
-
             }
 
             .reject-button:hover {
@@ -587,6 +587,51 @@
     --p-primary-900: var(--custom-900) !important;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.guide {
+    font-size: 14px;
+    line-height: 1.6;
+
+    h1 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 20px 0 10px;
+    }
+
+    h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 16px 0 8px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    ul,
+    ol {
+        margin: 8px 0 12px 20px;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 6px;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+}

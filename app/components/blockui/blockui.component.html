@@ -1,0 +1,8 @@
+<p-blockui [target]="target" [blocked]="blocked">
+   <ng-template #content>
+      <div class="container-loading">
+         <p-progress-spinner class="spinner" strokeWidth="8" fill="transparent" animationDuration=".5s" />
+         <div *ngIf="message" class="message"> {{ message }} </div>
+      </div>
+   </ng-template>
+</p-blockui>

@@ -1,0 +1,287 @@
+<!-- Drawer buttons -->
+<p-drawer [(visible)]="bottomPanel" [styleClass]="'drawer-options'" modal="false" position="bottom">
+    <ng-template #headless>
+        <div class="flex action-container-parent">
+            <div class="flex flex-wrap action-container">
+                <div *ngFor="let action of actions">
+                    <app-button *ngIf="action?.label" [styleClass]="'action-button'" [label]="action?.label" [type]="ButtonType.Button" [icon]="action?.icon"
+                        [fluid]="false" [disabled]="getActionDisabled(action)" (onClick)="action?.command($event)"></app-button>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap action-container">
+                <div class="action-button">
+                    <app-button [type]="ButtonType.ButtonCancel" [icon]="'fas fa-times'" [fluid]="false" (onClick)="myCancelSelection()"></app-button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-drawer>
+
+<!-- Table -->
+<div [class]="'table ' + styleClass">
+    <div *ngIf="filterFields.length > 0" class="grid gap-2 grid-cols-12 global-search">
+        <div class="col-span-12">
+            <app-field [type]="FieldType.Text" [float]="false" [placeholder]="'Pesquisar...'" [icon]="'fas fa-search'" [iconPos]="'right'"
+                (onInput)="myFilter($event)"></app-field>
+        </div>
+    </div>
+
+    <div [ngClass]="{ 'container-header' : editLayout || onAddNewItem.observers.length > 0, 'container-header-single': !editLayout && onAddNewItem.observers.length <= 0 }">
+        <div *ngIf="editLayout" class="configuration">
+            <div *ngIf="tableLayout == TableLayout.Grid" class="grid-checkbox-all">
+                <p-checkbox [disabled]="items?.length <= 0" [ngModel]="(selection?.length == items?.length) && items?.length > 0" [binary]="true"
+                    (onChange)="myChangeGridCheckBoxAll($event)" />
+            </div>
+
+            <div [ngClass]="{ 'grid-layout': tableLayout == TableLayout.Grid }">
+                <p-selectbutton [(ngModel)]="tableLayout" [options]="tableLayoutOptions" [allowEmpty]="false">
+                    <ng-template #item let-item>
+                        <i [class]="item?.icon"></i>
+                    </ng-template>
+                </p-selectbutton>
+            </div>
+        </div>
+
+        <div *ngIf="onAddNewItem.observers.length > 0" class="add-register">
+            <app-button tourAnchor="t-new-item-button" [type]="ButtonType.Button" [label]="'Adicionar um registro'" [icon]="'fas fa-plus'" [fluid]="false"
+                [changeOnMobile]="true" (onClick)="myAddNewItem()"></app-button>
+        </div>
+
+        <div *ngIf="onExportCSV.observers.length > 0 || onExportXLSX.observers.length > 0 || onExportPDF.observers.length > 0" class="export">
+            <app-button [type]="ButtonType.Button" [icon]="'fas fa-file-csv'" [fluid]="false" pTooltip="Exportar para CSV" tooltipPosition="top"
+                (onClick)="myExportCSV()"></app-button>
+            <app-button [type]="ButtonType.Button" [icon]="'fas fa-file-xls'" [fluid]="false" pTooltip="Exportar para Excel" tooltipPosition="top"
+                (onClick)="myExportXLSX()"></app-button>
+            <app-button [type]="ButtonType.Button" [icon]="'fas fa-file-pdf'" [fluid]="false" pTooltip="Exportar para PDF" tooltipPosition="left"
+                (onClick)="myExportPDF()"></app-button>
+        </div>
+    </div>
+
+    <div [ngClass]="{ 'ng-invalid-table ng-invalid ng-dirty': !valid }">
+        <div *ngIf="tableLayout == TableLayout.List || !editLayout">
+            <p-table #table [columns]="columns" [value]="items" [paginator]="paginator" [globalFilterFields]="filterFields" [rows]="paginator ? maxRows : 999999"
+                [tableStyle]="tableStyle" selectionMode="multiple" [(selection)]="selection" [scrollable]="true" [loading]="loading" editMode="row" dataKey="uuid"
+                [scrollHeight]="'calc(100vh - ' + this.discountScrollHeight + 'px)'" [reorderableColumns]="orderable" [emptymessage]="'Nenhum registro encontrado'"
+                (onRowSelect)="myRowSelect()" (onRowReorder)="myReorder()" (onRowUnselect)="myRowUnSelect()" (onHeaderCheckboxToggle)="myHeaderCheckboxToggle($event)"
+                (onPage)="myPage($event)">
+
+                <ng-template #header let-columns>
+                    <tr>
+                        <th *ngIf="selection" pFrozenColumn style="width: 4rem"><p-tableHeaderCheckbox /></th>
+                        <th *ngIf="orderable" pFrozenColumn style="width: 2rem"></th>
+                        <th *ngFor="let column of columns" [style]="{ 'min-width': column?.minWidth, 'max-width': column?.maxWidth }"
+                            pSortableColumn="{{column?.sortField}}" pReorderableColumn pFrozenColumn [frozen]="column?.frozenColumn">
+                            <div class="title" pTooltip="{{column?.label}}" tooltipPosition="top">
+                                {{ column?.label }}
+                                <p-sortIcon *ngIf="column?.sortField" field="{{column?.sortField}}" />
+                            </div>
+                        </th>
+                        <th *ngIf="editable" class="edit-buttons-container">
+                            <div class="action-header">
+                                <div>
+                                    Ações
+                                </div>
+
+                                <div>
+                                    <app-button [type]="ButtonType.SplitButtonSingle" [styleClass]="'internal-actions-button'" [options]="internalActions"
+                                        [icon]="'fas fa-ellipsis-vertical'" [fluid]="false" [noBackground]="true" [noBorder]="true"
+                                        (onDropdownClick)="updateInternalActions()"></app-button>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+
+                <ng-template *ngIf="!loading" #body let-rowData let-editing="editing" let-columns="columns" let-rowIndex="rowIndex">
+                    <tr [pEditableRow]="rowData" [pReorderableRow]="rowIndex" [ngStyle]="columns[0]?.rowStyle ? columns[0]?.rowStyle(rowData) : null">
+                        <td *ngIf="selection" pFrozenColumn [class]="(getSelection(rowData) ? 'row-selected' : '')">
+                            <p-tableCheckbox [value]="rowData" />
+                        </td>
+
+                        <td *ngIf="orderable" pFrozenColumn>
+                            <span class="fas fa-bars" pReorderableRowHandle></span>
+                        </td>
+
+                        <td *ngFor="let column of columns; let columnIndex = index" pFrozenColumn [frozen]="column?.frozenColumn"
+                            [style]="{ 'min-width': column?.minWidth, 'max-width': column?.maxWidth }">
+                            <p-cellEditor>
+                                <ng-template #input>
+                                    <div *ngIf="column?.type == ColumnType.Normal || column?.type == ColumnType.Tag || column?.type == ColumnType.Image"
+                                        [ngClass]="{ 'image': column?.type == ColumnType.Image }">
+                                        <ng-container *ngTemplateOutlet="column?.template; context: { $implicit: rowData }">
+                                        </ng-container>
+                                    </div>
+
+                                    <div *ngIf="column?.type == ColumnType.Json" [ngStyle]="column?.columnStyle ? column?.columnStyle(rowData) : null">
+
+                                        <div class="container-json">
+                                            <pre> {{ column?.field(rowData) | json }} </pre>
+
+                                            <a class="fas fa-copy" (click)="myCopyToClipboard(column?.field(rowData))"></a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+
+                                <ng-template #output>
+                                    <div *ngIf="!rowData?.getCreatedAt() && columnIndex == 0" class="container-badge-new">
+                                        <p-badge value="Novo" class="badge-new"></p-badge>
+                                    </div>
+
+                                    <div *ngIf="column?.type == ColumnType.Normal" class="data" pTooltip="{{column?.field(rowData)}}" tooltipPosition="top"
+                                        [ngStyle]="column?.columnStyle ? column?.columnStyle(rowData) : null">
+
+                                        {{column?.field(rowData)}}
+                                    </div>
+
+                                    <div *ngIf="column?.type == ColumnType.Json" [ngStyle]="column?.columnStyle ? column?.columnStyle(rowData) : null">
+
+                                        <div class="container-json">
+                                            <pre> {{ column?.field(rowData) | json }} </pre>
+
+                                            <a class="fas fa-copy" (click)="myCopyToClipboard(column?.field(rowData))"></a>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="column?.type == ColumnType.Tag" pTooltip="{{column?.field(rowData)}}" tooltipPosition="top" class="container-tag">
+                                        <div *ngIf="column?.field(rowData)" class="tag" [ngStyle]="column?.styleTag ? column?.styleTag(rowData) : null">
+                                            {{ column?.field(rowData) }}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-cellEditor>
+                        </td>
+
+                        <td *ngIf="editable" class="edit-buttons-container">
+                            <div class="flex items-center justify-center gap-2">
+                                <!-- Edit -->
+                                <app-button *ngIf="!editing && !rowData.delete" [type]="ButtonType.Button" [icon]="'fas fa-pencil'" [fluid]="false" [noBackground]="true"
+                                    [noBorder]="true" pInitEditableRow (onClick)="myRowEditInit(rowData)"></app-button>
+
+                                <!-- Delete -->
+                                <app-button *ngIf="!editing && !rowData.delete" [type]="ButtonType.ButtonDelete" [fluid]="false" [noBackground]="true" [noBorder]="true"
+                                    (onClick)="myDeleteItem(rowIndex)"></app-button>
+
+                                <!-- Revert Delete -->
+                                <app-button *ngIf="rowData.delete" [type]="ButtonType.ButtonRevert" [fluid]="false" [noBackground]="true" [noBorder]="true"
+                                    (onClick)="myDeleteItem(rowIndex)"></app-button>
+
+                                <!-- Save Edit -->
+                                <app-button *ngIf="editing && !rowData.delete" [type]="ButtonType.ButtonCheck" [fluid]="false" [noBackground]="true" [noBorder]="true"
+                                    pSaveEditableRow (onClick)="myRowEditSave(rowData)"></app-button>
+
+                                <!-- Cancel Edit -->
+                                <app-button *ngIf="editing && !rowData.delete" [type]="ButtonType.ButtonCancel" [fluid]="false" [noBackground]="true" [noBorder]="true"
+                                    pCancelEditableRow (onClick)="myRowEditCancel(rowData, rowIndex)"></app-button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template #loadingbody let-rowData let-columns="fakeColumns">
+                    <tr *ngFor="let row of fakeRows">
+                        <td pFrozenColumn>
+                            <p-skeleton width="1.25rem" height="1.25rem" />
+                        </td>
+
+                        <td *ngIf="orderable">
+                            <p-skeleton width="1.5rem" height="1.5rem" />
+                        </td>
+
+                        <td *ngFor="let column of fakeColumns">
+                            <p-skeleton />
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template #emptymessage let-rowData let-columns="columns" let-index="rowIndex">
+                    <tr class="empty" [style]="{ height: 'calc(100vh - ' + ((this.discountScrollHeight ?? 0) + 48) + 'px)' }">
+                        <td [attr.colspan]="editable ? fakeColumns?.length + 2 : fakeColumns?.length + 1">
+                            Nenhum registro encontrado :/
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="paginatorright">
+                    <div *ngIf="selection">
+                        <span class="fas fa-check selected"></span> <b>{{ selection?.length | number }} / {{ totalRecords | number }} </b> &nbsp; registros encontrados
+                    </div>
+
+                    <div *ngIf="!selection">
+                        <b> {{ totalRecords | number }} </b> &nbsp; registros encontrados
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+
+    <div *ngIf="tableLayout == TableLayout.Grid && editLayout">
+        <p-dataview [value]="items" [paginator]="true" [rows]="20" [layout]="'grid'" [emptyMessage]="' '" (onPage)="myPage($event)">
+            <ng-template #grid let-items>
+                <div class="grid-container">
+                    <div *ngIf="!loading && items?.length > 0" class="grid gap-2 grid-cols-12"
+                        [style]="{ 'max-height': 'calc(100vh - ' + this.discountScrollHeight + 'px)', 'overflow': 'auto' }">
+                        <div *ngFor="let rowData of items; let index = index" class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3">
+                            <div [class]="'grid-item ' + (getSelection(rowData) ? 'grid-item-selected' : '') "
+                                [ngStyle]="columns[0].rowStyle ? columns[0].rowStyle(rowData) : null">
+                                <div class="grid-checkbox">
+                                    <p-checkbox [(ngModel)]="selection" [inputId]="rowData?.uuid" [value]="rowData" (onChange)="myChangeGridCheckBox($event)" />
+                                </div>
+
+                                <div class="grid-data">
+                                    <div *ngFor="let column of columns">
+                                        <div class="flex flex-wrap padding-item" *ngIf="column?.type == ColumnType.Normal">
+                                            <div class="title"> {{ column?.label }}: &nbsp; </div>
+                                            <div class="data" pTooltip="{{column?.field(rowData)}}" tooltipPosition="top">
+                                                {{ column?.field(rowData) }} </div>
+                                        </div>
+
+                                        <div class="flex flex-wrap padding-item" *ngIf="column?.type == ColumnType.Tag">
+                                            <div class="title"> {{ column?.label }}: &nbsp; </div>
+
+                                            <div class="container-tag">
+                                                <div class="data container-tag tag" [ngStyle]="column?.styleTag ? column?.styleTag(rowData) : null">
+                                                    {{ column?.field(rowData) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="loading" class="grid gap-2 grid-cols-12"
+                        [style]="{ 'max-height': 'calc(100vh - ' + this.discountScrollHeight + 'px)', 'overflow': 'hidden' }">
+                        <div *ngFor="let item of fakeRows; let index = index" class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-3">
+                            <div class="grid-item">
+                                <div class="grid-checkbox">
+                                    <p-skeleton width="1.25rem" height="1.25rem" />
+                                </div>
+
+                                <div class="grid-data">
+                                    <div *ngFor="let column of columns">
+                                        <div *ngIf="column?.type == ColumnType.Normal">
+                                            <div class="title padding-item">
+                                                <p-skeleton [width]="'100%'" height="1.25rem" />
+                                            </div>
+                                            <div class="data padding-item">
+                                                <p-skeleton [width]="'100%'" height="1.25rem" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template *ngIf="!loading" #emptymessage>
+                <div class="grid-empty" [style]="{ 'height': 'calc(100vh - ' + ((this.discountScrollHeight ?? 0) + 5) + 'px)', 'overflow': 'auto' }">
+                    Nenhum registro encontrado :/
+                </div>
+            </ng-template>
+        </p-dataview>
+    </div>
+</div>

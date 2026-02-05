@@ -1,0 +1,255 @@
+<app-blockui [target]="blockUIPanel" [blocked]="blockUI" [message]="blockUIMessage" />
+
+<div class="customer-area">
+   <div class="welcome">
+      <h1 class="user-name"> Bem vindo à <b> Calculadora de Preços </b> </h1>
+   </div>
+
+   <div class="grid gap-2 grid-cols-12">
+      <div class="col-span-12 lg:col-span-6 p-card card-secondary">
+         <div class="card-inner">
+            <p class="title"> Suporte </p>
+
+            <div class="support">
+               <div class="title">
+                  <span class="fab fa-whatsapp"> </span>
+                  <p> WhatsApp </p>
+               </div>
+
+               <div class="data">
+                  <p> (54) 9 9968-5468 </p>
+               </div>
+
+               <div class="button">
+                  <app-button [label]="'Iniciar conversa'" [type]="ButtonType.Button" [icon]="'fab fa-whatsapp'"
+                     [fluid]="true" (onClick)="contactSupport()"></app-button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-6 p-card card-secondary">
+         <div class="card-inner">
+            <p class="title"> Redes Sociais </p>
+
+            <div class="support">
+               <div class="title-other">
+                  <span class="fab fa-instagram"> </span>
+                  <a href="https://www.instagram.com/confiancaassessoriagpe/" target="_blank"> Instagram </a>
+               </div>
+
+               <div class="title-other">
+                  <span class="fab fa-facebook"> </span>
+                  <a href="https://www.facebook.com/p/Confian%C3%A7a-Assessoria-e-Contabilidade-100064116517735/?locale=pt_BR"
+                     target="_blank"> Facebook </a>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-span-12 p-card card-secondary">
+         <div class="card-inner">
+            <div class="guide">
+               <h1>Manual de Instruções</h1>
+
+               <h2>1. Objetivo do aplicativo</h2>
+
+               <p>
+                  O <strong>App de Precificação</strong> tem como finalidade ajudar você a formar preços corretamente,
+                  considerando:
+               </p>
+
+               <ul>
+                  <li>Custos variáveis</li>
+                  <li>Custos fixos</li>
+                  <li>Impostos (modelo atual e pós-reforma)</li>
+                  <li>Margem de lucro</li>
+               </ul>
+
+               <p>
+                  O foco é garantir que o preço final cubra todos os custos e gere resultado real para a empresa.
+               </p>
+
+               <h2>2. Conceitos fundamentais</h2>
+
+               <p>
+                  Antes de usar o app, é importante entender três pilares da precificação:
+               </p>
+
+               <h3>✅ Custos Variáveis</h3>
+
+               <p>São aqueles que mudam conforme o volume de vendas. Exemplos:</p>
+
+               <ul>
+                  <li>Taxas de cartão</li>
+                  <li>Comissões de vendedores ou marketplaces</li>
+                  <li>Fretes</li>
+                  <li>Embalagens</li>
+                  <li>Outras despesas diretamente ligadas à venda</li>
+               </ul>
+
+               <p>
+                  Esses valores devem ser informados no app como percentual por venda, conforme o campo disponível.
+               </p>
+
+               <h3>✅ Custos Fixos</h3>
+
+               <p>São despesas que existem independentemente de vender mais ou menos:</p>
+
+               <ul>
+                  <li>Folha de pagamento</li>
+                  <li>Aluguel</li>
+                  <li>Água</li>
+                  <li>Energia elétrica</li>
+                  <li>Internet</li>
+                  <li>Sistemas</li>
+                  <li>Contabilidade</li>
+                  <li>Outras despesas administrativas</li>
+               </ul>
+
+               <p>O app trabalha com o valor do custo fixo sobre o faturamento.</p>
+
+               <p><strong>Como calcular o percentual/valor do custo fixo:</strong></p>
+
+               <p>Use a fórmula:</p>
+
+               <p><strong>Custo Fixo ÷ Faturamento = % de Custo Fixo</strong></p>
+
+               <p><strong>Exemplo:</strong></p>
+
+               <ul>
+                  <li>Custo fixo mensal: R$ 15.000</li>
+                  <li>Faturamento mensal: R$ 60.000</li>
+               </ul>
+
+               <p><strong>Cálculo:</strong></p>
+
+               <p>15.000 ÷ 60.000 = <strong>25%</strong></p>
+
+               <p>
+                  👉 Portanto, seu custo fixo representa <strong>25% do faturamento</strong>.
+               </p>
+
+               <p>Agora, aplicando isso em um produto de R$ 50,00:</p>
+
+               <p><strong>25% de 50,00 = R$ 12,50</strong></p>
+
+               <p>
+                  👉 Em um produto de R$ 50,00, R$ 12,50 são apenas para pagar custos fixos.
+               </p>
+
+               <p>
+                  Para esse exemplo, este é o valor que deve ser informado no campo de custo fixo do app.
+               </p>
+
+               <h2>3. Impostos — como preencher no aplicativo</h2>
+
+               <p>O app permite trabalhar com dois cenários:</p>
+
+               <h3>🔹 Modelo atual (antes da Reforma Tributária)</h3>
+
+               <p>Hoje, os impostos são calculados por dentro do preço.</p>
+
+               <p>Isso significa que:</p>
+
+               <ul>
+                  <li>O valor do produto/serviço</li>
+                  <li>E o valor da nota fiscal</li>
+               </ul>
+
+               <p>são o mesmo.</p>
+
+               <p>O imposto já está embutido no preço de venda.</p>
+
+               <p>Neste caso, no campo <strong>Impostos %</strong>, informe:</p>
+
+               <ul>
+                  <li>ICMS + PIS + COFINS</li>
+                  <li>ou a alíquota do Simples Nacional (conforme o anexo da empresa)</li>
+               </ul>
+
+               <h3>🔹 Modelo pós-Reforma Tributária</h3>
+
+               <p>Após a reforma:</p>
+
+               <p><strong>👉 Os impostos passam a ser calculados por fora do preço.</strong></p>
+
+               <p>Isso muda totalmente a lógica:</p>
+
+               <ul>
+                  <li>Um valor é o preço do produto/mercadoria/serviço</li>
+                  <li>Outro valor é o total da nota fiscal</li>
+               </ul>
+
+               <p>Pois o imposto será somado ao final.</p>
+
+               <p>
+                  Em outras palavras:<br />
+                  <strong>Preço do produto + Imposto = Valor da Nota Fiscal</strong>
+               </p>
+
+               <p>Por isso, no pós-reforma:</p>
+
+               <ul>
+                  <li>O cliente verá dois valores: valor do item e valor do imposto</li>
+                  <li>O total da NF será maior que o preço do produto</li>
+               </ul>
+
+               <p><strong>📌 Qual percentual usar no pós-reforma?</strong></p>
+
+               <p>
+                  Enquanto as alíquotas oficiais não forem totalmente divulgadas:
+               </p>
+
+               <p><strong>👉 Sugestão prática: utilizar 28% como referência (IBS + CBS).</strong></p>
+
+               <p>
+                  Quando houver publicação definitiva das alíquotas, substitua pelo valor oficial.
+               </p>
+
+               <h2>4. Fluxo básico de uso do app</h2>
+
+               <ol>
+                  <li>Informe o custo do produto ou serviço</li>
+                  <li>Preencha as despesas variáveis (cartão, comissão, frete etc.)</li>
+                  <li>Informe o valor do custo fixo calculado sobre o preço de venda</li>
+                  <li>Preencha o campo de impostos (%) conforme o regime atual ou pós-reforma</li>
+                  <li>Defina a margem de lucro desejada</li>
+               </ol>
+
+               <p>O app retornará:</p>
+
+               <ul>
+                  <li>Preço ideal de venda</li>
+                  <li>Valor do imposto (quando aplicável)</li>
+                  <li>Resultado real da operação</li>
+               </ul>
+
+               <h2>5. Ponto de atenção importante</h2>
+
+               <p><strong>Nunca precifique apenas “olhando o concorrente”.</strong></p>
+
+               <p>Sem considerar:</p>
+
+               <ul>
+                  <li>Custos fixos</li>
+                  <li>Custos variáveis</li>
+                  <li>Impostos</li>
+                  <li>Margem</li>
+               </ul>
+
+               <p>
+                  O risco é vender muito e, mesmo assim, ter prejuízo.
+               </p>
+
+               <p>
+                  O app existe justamente para evitar esse erro e ajudá-lo a se guiar pela condição econômica
+                  e financeira do seu negócio.
+               </p>
+
+
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
